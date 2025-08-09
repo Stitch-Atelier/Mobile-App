@@ -25,10 +25,10 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.background,
     marginHorizontal: 16,
     paddingHorizontal: 12,
-    paddingVertical: 4,
     borderRadius: 12,
     borderWidth: 1,
     borderColor: COLORS.border,
+    marginBottom: 10,
   },
   input: {
     flex: 1,

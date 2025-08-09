@@ -57,7 +57,7 @@ export default function CarouselBanner() {
   };
 
   return (
-    <View style={styles.container}>
+    <View>
       <ScrollView
         ref={scrollRef}
         horizontal
@@ -88,7 +88,6 @@ export default function CarouselBanner() {
 }
 
 const styles = StyleSheet.create({
-  container: { marginTop: 10 },
   imageWrapper: {
     width: width - 20,
     height: 200,

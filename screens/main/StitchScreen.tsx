@@ -1,38 +1,51 @@
 import React from "react";
-import { View, Text, StyleSheet, SafeAreaView } from "react-native";
-import { COLORS, FONTS } from "../../theme";
+import { View, StyleSheet, SafeAreaView, ScrollView } from "react-native";
+import { COLORS } from "../../theme";
 import StitchHeader from "../../components/StitchHeader";
 import SearchBar from "../../components/SearchBar";
 import CarouselBanner from "../../components/CarouselBanner";
+import Categories from "../../components/Categories";
+import Testimonials from "../../components/Testimonials";
+import OffersSection from "../../components/OffersSection";
+
 export default function StitchScreen() {
   return (
-    <>
-      <SafeAreaView style={styles.safeArea}>
-        <StitchHeader />
-        <SearchBar />
-        <CarouselBanner />
-        <View style={styles.container}>
-          <Text style={styles.text}>Stitch Booking Screen</Text>
+    <SafeAreaView style={styles.safeArea}>
+      {/* Fixed Header & Search */}
+      <StitchHeader />
+      <SearchBar />
+
+      {/* Scrollable Content */}
+      <ScrollView
+        contentContainerStyle={styles.scrollContent}
+        showsVerticalScrollIndicator={false}
+      >
+        <View style={styles.section}>
+          <CarouselBanner />
         </View>
-      </SafeAreaView>
-    </>
+        <View style={styles.section}>
+          <OffersSection />
+        </View>
+        <View style={styles.section}>
+          <Categories />
+        </View>
+        <View style={styles.section}>
+          <Testimonials />
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: COLORS.surface,
   },
-  container: {
-    flex: 1,
-    backgroundColor: COLORS.background,
-    justifyContent: "center",
-    alignItems: "center",
+  scrollContent: {
+    paddingBottom: 20,
   },
-  text: {
-    fontFamily: FONTS.bold,
-    fontSize: 20,
-    color: COLORS.text,
+  section: {
+    marginTop: 16,
   },
 });
