@@ -2,12 +2,15 @@ import React from "react";
 import { View, Text, StyleSheet, SafeAreaView } from "react-native";
 import { COLORS, FONTS } from "../../theme";
 import StitchHeader from "../../components/StitchHeader";
-
+import SearchBar from "../../components/SearchBar";
+import CarouselBanner from "../../components/CarouselBanner";
 export default function StitchScreen() {
   return (
     <>
       <SafeAreaView style={styles.safeArea}>
         <StitchHeader />
+        <SearchBar />
+        <CarouselBanner />
         <View style={styles.container}>
           <Text style={styles.text}>Stitch Booking Screen</Text>
         </View>
@@ -19,7 +22,7 @@ export default function StitchScreen() {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: COLORS.surface, // Matches header background so safe area blends
+    backgroundColor: "white",
   },
   container: {
     flex: 1,
