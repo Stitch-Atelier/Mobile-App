@@ -1,27 +1,21 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import AuthStack from "./navigation/AuthStack";
+import MainTabs from "./navigation/MainTabs";
 import * as Font from "expo-font";
-import LoginScreen from "./screens/LoginScreen";
-import SignupScreen from "./screens/SignupScreen";
-import { COLORS, FONTS } from "./theme";
 
-export type RootStackParamList = {
-  Login: undefined;
-  Signup: undefined;
-};
-
-const Stack = createNativeStackNavigator<RootStackParamList>();
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [fontsLoaded] = Font.useFonts({
-    [FONTS.bold]: require("./assets/fonts/Inconsolata-Bold.ttf"),
-    [FONTS.extraBold]: require("./assets/fonts/Inconsolata-ExtraBold.ttf"),
-    [FONTS.extraLight]: require("./assets/fonts/Inconsolata-ExtraLight.ttf"),
-    [FONTS.light]: require("./assets/fonts/Inconsolata-Light.ttf"),
-    [FONTS.medium]: require("./assets/fonts/Inconsolata-Medium.ttf"),
-    [FONTS.regular]: require("./assets/fonts/Inconsolata-Regular.ttf"),
-    [FONTS.semiBold]: require("./assets/fonts/Inconsolata-SemiBold.ttf"),
+    IncBold: require("./assets/fonts/Inconsolata-Bold.ttf"),
+    IncExBold: require("./assets/fonts/Inconsolata-ExtraBold.ttf"),
+    IncExLight: require("./assets/fonts/Inconsolata-ExtraLight.ttf"),
+    IncLight: require("./assets/fonts/Inconsolata-Light.ttf"),
+    IncMedium: require("./assets/fonts/Inconsolata-Medium.ttf"),
+    IncRegular: require("./assets/fonts/Inconsolata-Regular.ttf"),
+    IncSemiBold: require("./assets/fonts/Inconsolata-SemiBold.ttf"),
   });
 
   if (!fontsLoaded) return null;
@@ -29,8 +23,8 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen name="Signup" component={SignupScreen} />
+        <Stack.Screen name="AuthStack" component={AuthStack} />
+        <Stack.Screen name="MainTabs" component={MainTabs} />
       </Stack.Navigator>
     </NavigationContainer>
   );

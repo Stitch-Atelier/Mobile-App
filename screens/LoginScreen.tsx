@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -7,21 +7,25 @@ import {
   StyleSheet,
   KeyboardAvoidingView,
   Platform,
+  Alert,
 } from "react-native";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
 import * as Animatable from "react-native-animatable";
-import { RootStackParamList } from "../App";
 import { COLORS, FONTS } from "../theme";
-
-type LoginScreenNavProp = NativeStackNavigationProp<
-  RootStackParamList,
-  "Login"
->;
+import { useNavigation } from "@react-navigation/native";
 
 export default function LoginScreen() {
-  const navigation = useNavigation<LoginScreenNavProp>();
+  const navigation = useNavigation();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = () => {
+    if (email && password) {
+      navigation.navigate("MainTabs" as never);
+    } else {
+      Alert.alert("Error", "Please fill all fields");
+    }
+  };
 
   return (
     <LinearGradient
@@ -47,20 +51,25 @@ export default function LoginScreen() {
             style={styles.input}
             placeholder="Email"
             placeholderTextColor={COLORS.textLight}
-            keyboardType="email-address"
+            value={email}
+            onChangeText={setEmail}
           />
           <TextInput
             style={styles.input}
             placeholder="Password"
             placeholderTextColor={COLORS.textLight}
             secureTextEntry
+            value={password}
+            onChangeText={setPassword}
           />
 
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button} onPress={handleLogin}>
             <Text style={styles.buttonText}>Login</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => navigation.navigate("Signup")}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Signup" as never)}
+          >
             <Text style={styles.link}>
               Don’t have an account?{" "}
               <Text style={styles.linkHighlight}>Sign up</Text>
@@ -73,33 +82,26 @@ export default function LoginScreen() {
 }
 
 const styles = StyleSheet.create({
-  gradient: {
-    flex: 1,
-  },
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    paddingHorizontal: 20,
-  },
+  gradient: { flex: 1 },
+  container: { flex: 1, justifyContent: "center", paddingHorizontal: 20 },
   title: {
     fontSize: 32,
     fontFamily: FONTS.extraBold,
-    color: COLORS.surface,
+    color: "#fff",
     textAlign: "center",
   },
   subtitle: {
     fontSize: 16,
-    fontFamily: FONTS.light,
-    color: COLORS.background,
+    color: "#d1fae5",
     textAlign: "center",
-    marginTop: 4,
+    fontFamily: FONTS.regular,
     marginBottom: 20,
   },
   card: {
     backgroundColor: COLORS.surface,
     padding: 20,
     borderRadius: 20,
-    shadowColor: COLORS.text,
+    shadowColor: "#000",
     shadowOpacity: 0.1,
     shadowOffset: { width: 0, height: 5 },
     shadowRadius: 10,
@@ -109,34 +111,29 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: COLORS.border,
     borderRadius: 10,
-    paddingHorizontal: 14,
-    paddingVertical: 12,
+    padding: 12,
     fontSize: 16,
     fontFamily: FONTS.regular,
     color: COLORS.text,
-    marginBottom: 14,
+    marginBottom: 15,
     backgroundColor: COLORS.background,
   },
   button: {
     backgroundColor: COLORS.primary,
     paddingVertical: 14,
     borderRadius: 10,
-    marginTop: 6,
   },
   buttonText: {
-    color: COLORS.surface,
     textAlign: "center",
+    color: "#fff",
     fontFamily: FONTS.semiBold,
     fontSize: 16,
   },
   link: {
     textAlign: "center",
-    marginTop: 16,
+    marginTop: 20,
     color: COLORS.textLight,
     fontFamily: FONTS.light,
   },
-  linkHighlight: {
-    color: COLORS.primary,
-    fontFamily: FONTS.medium,
-  },
+  linkHighlight: { color: COLORS.primary, fontFamily: FONTS.medium },
 });
