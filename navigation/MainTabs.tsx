@@ -5,7 +5,7 @@ import ExploreScreen from "../screens/main/ExploreScreen";
 import ProfileScreen from "../screens/main/ProfileScreen";
 import { COLORS } from "../theme";
 import { Ionicons } from "@expo/vector-icons";
-import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+
 const Tab = createBottomTabNavigator();
 
 export default function MainTabs() {
@@ -22,6 +22,7 @@ export default function MainTabs() {
         tabBarActiveTintColor: COLORS.primary,
         tabBarInactiveTintColor: COLORS.textLight,
         headerShown: false,
+        headerStatusBarHeight: 10,
       })}
     >
       <Tab.Screen name="Stitch" component={StitchScreen} />
