@@ -17,7 +17,9 @@ import { useNavigation } from "@react-navigation/native";
 export default function SignupScreen() {
   const navigation = useNavigation();
   const [email, setEmail] = useState("");
+  const [mobile, setMobile] = useState("");
   const [password, setPassword] = useState("");
+  const [cPassword, setCPassword] = useState("");
 
   const handleLogin = () => {
     if (email && password) {
@@ -56,15 +58,30 @@ export default function SignupScreen() {
           />
           <TextInput
             style={styles.input}
+            placeholder="Mobile"
+            placeholderTextColor={COLORS.textLight}
+            value={mobile}
+            onChangeText={setMobile}
+          />
+          <TextInput
+            style={styles.input}
             placeholder="Password"
             placeholderTextColor={COLORS.textLight}
             secureTextEntry
             value={password}
             onChangeText={setPassword}
           />
+          <TextInput
+            style={styles.input}
+            placeholder="Confirm Password"
+            placeholderTextColor={COLORS.textLight}
+            secureTextEntry
+            value={cPassword}
+            onChangeText={setCPassword}
+          />
 
           <TouchableOpacity style={styles.button} onPress={handleLogin}>
-            <Text style={styles.buttonText}>Login</Text>
+            <Text style={styles.buttonText}>Signup</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -121,6 +138,7 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: COLORS.primary,
     paddingVertical: 14,
+    fontFamily: FONTS.bold,
     borderRadius: 10,
   },
   buttonText: {

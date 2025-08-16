@@ -1,7 +1,6 @@
-
 export const COLORS = {
-  primary: "#10B981",
-  primaryDark: "#059669",
+  primary: "black",
+  primaryDark: "#2f100e",
   background: "#f9fafb",
   surface: "#ffffff",
   text: "#1f2937",
@@ -11,11 +10,15 @@ export const COLORS = {
 };
 
 export const FONTS = {
-  bold: "IncBold",
-  extraBold: "IncExBold",
-  extraLight: "IncExLight",
-  light: "IncLight",
-  medium: "IncMedium",
-  regular: "IncRegular",
-  semiBold: "IncSemiBold",
+  bold: "PlayBold",
+  boldItalic: "PlayBoldI",
+  extraBold: "PlayExtraB",
+  italic: "PlayI",
+  light: "PlayLight",
+  lightItalic: "PlayLightI",
+  medium: "PlayMedium",
+  mediumItalic: "PlayMediumI",
+  regular: "PlayRegular",
+  semiBold: "PlaySemiBold",
+  semiBoldItalic: "PlaySemiBoldI",
 };
