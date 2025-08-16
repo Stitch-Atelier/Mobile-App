@@ -47,6 +47,7 @@ const SplashScreen = () => {
       >
         BUILT AROUND YOU
       </Animated.Text>
+      <Text style={styles.subtitle}>Loading...</Text>
     </View>
   );
 };

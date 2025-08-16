@@ -13,14 +13,16 @@ import { LinearGradient } from "expo-linear-gradient";
 import * as Animatable from "react-native-animatable";
 import { COLORS, FONTS } from "../theme";
 import { useNavigation } from "@react-navigation/native";
+import { Ionicons } from "@expo/vector-icons";
 
 export default function LoginScreen() {
   const navigation = useNavigation();
-  const [email, setEmail] = useState("");
+  const [userVal, setUserVal] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = () => {
-    if (email && password) {
+    if (userVal && password) {
       navigation.navigate("MainTabs" as never);
     } else {
       Alert.alert("Error", "Please fill all fields");
@@ -49,19 +51,35 @@ export default function LoginScreen() {
         >
           <TextInput
             style={styles.input}
-            placeholder="Email"
+            placeholder="Email or Mobile"
             placeholderTextColor={COLORS.textLight}
-            value={email}
-            onChangeText={setEmail}
+            value={userVal}
+            onChangeText={setUserVal}
+            keyboardType="email-address"
+            autoCapitalize="none"
           />
-          <TextInput
-            style={styles.input}
-            placeholder="Password"
-            placeholderTextColor={COLORS.textLight}
-            secureTextEntry
-            value={password}
-            onChangeText={setPassword}
-          />
+
+          {/* Password Field with Toggle */}
+          <View style={styles.inputRow}>
+            <TextInput
+              style={styles.inputFlex}
+              placeholder="Password"
+              placeholderTextColor={COLORS.textLight}
+              secureTextEntry={!showPassword}
+              value={password}
+              onChangeText={setPassword}
+            />
+            <TouchableOpacity
+              onPress={() => setShowPassword(!showPassword)}
+              style={styles.iconBtn}
+            >
+              <Ionicons
+                name={showPassword ? "eye" : "eye-off"}
+                size={22}
+                color={COLORS.textLight}
+              />
+            </TouchableOpacity>
+          </View>
 
           <TouchableOpacity style={styles.button} onPress={handleLogin}>
             <Text style={styles.buttonText}>Login</Text>
@@ -118,10 +136,48 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     backgroundColor: COLORS.background,
   },
+  inputRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    borderWidth: 1,
+    borderColor: COLORS.border,
+    borderRadius: 10,
+    backgroundColor: COLORS.background,
+    marginBottom: 15,
+    paddingRight: 10,
+  },
+  inputFlex: {
+    flex: 1,
+    padding: 12,
+    fontSize: 16,
+    fontFamily: FONTS.regular,
+    color: COLORS.text,
+  },
+  iconBtn: { padding: 6 },
+  passwordContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    borderWidth: 1,
+    borderColor: COLORS.border,
+    borderRadius: 10,
+    backgroundColor: COLORS.background,
+    marginBottom: 15,
+  },
+  showHideButton: {
+    paddingHorizontal: 10,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  showHideText: {
+    fontFamily: FONTS.medium,
+    color: COLORS.primary,
+    fontSize: 14,
+  },
   button: {
     backgroundColor: COLORS.primary,
     paddingVertical: 14,
     borderRadius: 10,
+    marginTop: 5,
   },
   buttonText: {
     textAlign: "center",

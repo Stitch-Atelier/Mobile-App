@@ -13,6 +13,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import * as Animatable from "react-native-animatable";
 import { COLORS, FONTS } from "../theme";
 import { useNavigation } from "@react-navigation/native";
+import { Ionicons } from "@expo/vector-icons"; // 👈 for eye icon
 
 export default function SignupScreen() {
   const navigation = useNavigation();
@@ -20,9 +21,11 @@ export default function SignupScreen() {
   const [mobile, setMobile] = useState("");
   const [password, setPassword] = useState("");
   const [cPassword, setCPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [showCPassword, setShowCPassword] = useState(false);
 
   const handleLogin = () => {
-    if (email && password) {
+    if (email && password && mobile && cPassword) {
       navigation.navigate("MainTabs" as never);
     } else {
       Alert.alert("Error", "Please fill all fields");
@@ -49,37 +52,74 @@ export default function SignupScreen() {
           delay={200}
           style={styles.card}
         >
+          {/* Email */}
           <TextInput
             style={styles.input}
             placeholder="Email"
             placeholderTextColor={COLORS.textLight}
             value={email}
             onChangeText={setEmail}
-          />
-          <TextInput
-            style={styles.input}
-            placeholder="Mobile"
-            placeholderTextColor={COLORS.textLight}
-            value={mobile}
-            onChangeText={setMobile}
-          />
-          <TextInput
-            style={styles.input}
-            placeholder="Password"
-            placeholderTextColor={COLORS.textLight}
-            secureTextEntry
-            value={password}
-            onChangeText={setPassword}
-          />
-          <TextInput
-            style={styles.input}
-            placeholder="Confirm Password"
-            placeholderTextColor={COLORS.textLight}
-            secureTextEntry
-            value={cPassword}
-            onChangeText={setCPassword}
+            keyboardType="email-address"
           />
 
+          {/* Mobile with +91 */}
+          <View style={styles.inputRow}>
+            <Text style={styles.prefix}>+91</Text>
+            <TextInput
+              style={styles.inputFlex}
+              placeholder="Mobile"
+              placeholderTextColor={COLORS.textLight}
+              value={mobile}
+              onChangeText={setMobile}
+              keyboardType="phone-pad"
+            />
+          </View>
+
+          {/* Password */}
+          <View style={styles.inputRow}>
+            <TextInput
+              style={styles.inputFlex}
+              placeholder="Password"
+              placeholderTextColor={COLORS.textLight}
+              secureTextEntry={!showPassword}
+              value={password}
+              onChangeText={setPassword}
+            />
+            <TouchableOpacity
+              onPress={() => setShowPassword(!showPassword)}
+              style={styles.iconBtn}
+            >
+              <Ionicons
+                name={showPassword ? "eye" : "eye-off"}
+                size={22}
+                color={COLORS.textLight}
+              />
+            </TouchableOpacity>
+          </View>
+
+          {/* Confirm Password */}
+          <View style={styles.inputRow}>
+            <TextInput
+              style={styles.inputFlex}
+              placeholder="Confirm Password"
+              placeholderTextColor={COLORS.textLight}
+              secureTextEntry={!showCPassword}
+              value={cPassword}
+              onChangeText={setCPassword}
+            />
+            <TouchableOpacity
+              onPress={() => setShowCPassword(!showCPassword)}
+              style={styles.iconBtn}
+            >
+              <Ionicons
+                name={showCPassword ? "eye" : "eye-off"}
+                size={22}
+                color={COLORS.textLight}
+              />
+            </TouchableOpacity>
+          </View>
+
+          {/* Signup Button */}
           <TouchableOpacity style={styles.button} onPress={handleLogin}>
             <Text style={styles.buttonText}>Signup</Text>
           </TouchableOpacity>
@@ -135,11 +175,36 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     backgroundColor: COLORS.background,
   },
+  inputRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    borderWidth: 1,
+    borderColor: COLORS.border,
+    borderRadius: 10,
+    backgroundColor: COLORS.background,
+    marginBottom: 15,
+    paddingRight: 10,
+  },
+  inputFlex: {
+    flex: 1,
+    padding: 12,
+    fontSize: 16,
+    fontFamily: FONTS.regular,
+    color: COLORS.text,
+  },
+  iconBtn: { padding: 6 },
+  prefix: {
+    paddingLeft: 12,
+    paddingRight: 6,
+    fontSize: 16,
+    fontFamily: FONTS.medium,
+    color: COLORS.text,
+  },
   button: {
     backgroundColor: COLORS.primary,
     paddingVertical: 14,
-    fontFamily: FONTS.bold,
     borderRadius: 10,
+    marginTop: 10,
   },
   buttonText: {
     textAlign: "center",
