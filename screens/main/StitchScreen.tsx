@@ -1,19 +1,30 @@
 import React from "react";
-import { View, StyleSheet, SafeAreaView, ScrollView } from "react-native";
+import {
+  View,
+  StyleSheet,
+  SafeAreaView,
+  ScrollView,
+  StatusBar,
+  Platform,
+} from "react-native";
 import { COLORS } from "../../theme";
 import StitchHeader from "../../components/StitchHeader";
-import SearchBar from "../../components/SearchBar";
 import CarouselBanner from "../../components/CarouselBanner";
-import Categories from "../../components/Categories";
-import Testimonials from "../../components/Testimonials";
-import OffersSection from "../../components/OffersSection";
+import StitchOptions from "../../components/StitchOptions";
+import StitchStory from "../../components/StitchStory";
 
 export default function StitchScreen() {
   return (
     <SafeAreaView style={styles.safeArea}>
+      {/* StatusBar Config */}
+      <StatusBar
+        translucent
+        backgroundColor="transparent"
+        barStyle="dark-content" // change to "light-content" if needed
+      />
+
       {/* Fixed Header & Search */}
       <StitchHeader />
-      <SearchBar />
 
       {/* Scrollable Content */}
       <ScrollView
@@ -24,13 +35,10 @@ export default function StitchScreen() {
           <CarouselBanner />
         </View>
         <View style={styles.section}>
-          <OffersSection />
+          <StitchOptions />
         </View>
         <View style={styles.section}>
-          <Categories />
-        </View>
-        <View style={styles.section}>
-          <Testimonials />
+          <StitchStory />
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -41,11 +49,12 @@ const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
     backgroundColor: COLORS.surface,
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0, // 👈 Fix for Android
   },
   scrollContent: {
     paddingBottom: 20,
   },
   section: {
-    marginTop: 16,
+    marginTop: 4,
   },
 });

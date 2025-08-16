@@ -75,14 +75,14 @@ export default function CarouselBanner() {
       </ScrollView>
 
       {/* Pagination Dots */}
-      <View style={styles.pagination}>
+      {/* <View style={styles.pagination}>
         {images.map((_, index) => (
           <View
             key={index}
             style={[styles.dot, activeIndex === index && styles.activeDot]}
           />
         ))}
-      </View>
+      </View> */}
     </View>
   );
 }
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     width: width - 20,
     height: 200,
     marginHorizontal: 10,
-    borderRadius: 10,
+    borderRadius: 12,
     overflow: "hidden",
     backgroundColor: COLORS.border,
   },

@@ -47,7 +47,7 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         {/* 👉 Replace this check with your auth logic */}
-        <Stack.Screen name="AuthStack" component={AuthStack} />
+        {/* <Stack.Screen name="AuthStack" component={AuthStack} /> */}
         <Stack.Screen name="MainTabs" component={MainTabs} />
       </Stack.Navigator>
     </NavigationContainer>
