@@ -76,20 +76,20 @@ const TabBar = ({ state, descriptors, navigation }: BottomTabBarProps) => {
                 <Ionicons
                   name={getIcon(route.name, isFocused) as any}
                   size={route.name === "Stitch" ? 28 : 22}
-                  color={isFocused ? "white" : COLORS.textLight}
+                  color={isFocused ? "white" : COLORS.white}
                 />
               </View>
               {route.name !== "Stitch" && (
                 <Text
                   style={[
                     styles.label,
-                    { color: isFocused ? "white" : COLORS.textLight },
+                    { color: isFocused ? "white" : COLORS.white },
                   ]}
                 >
                   {typeof label === "function"
                     ? label({
                         focused: isFocused,
-                        color: isFocused ? "white" : COLORS.textLight,
+                        color: isFocused ? "white" : COLORS.white,
                         position: "below-icon",
                         children: route.name,
                       })
@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
     marginTop: -25, // float above bar
   },
   stitchButton: {
-    backgroundColor: COLORS.background, // highlight color
+    backgroundColor: COLORS.black, // highlight color
     borderRadius: 35,
     borderWidth: 2,
     borderColor: "white",

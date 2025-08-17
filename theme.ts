@@ -1,13 +1,10 @@
 export const COLORS = {
-  background: "black",
-  primaryLight: "#d8b4fe",
-  primaryDark: "#9333ea",
-  surface: "#ffffff",
-  text: "white",
-  textLight: "#6b7280",
-  textDark: "#111827",
+  black: "black",
+  white: "white",
+  lilac: "#d8c7fe",
+  lightViolet: "#bea1f7",
+  gradientViolet: "#aa87ff",
   border: "#e5e7eb",
-  danger: "#ef4444",
   yellow: "#fde047",
   bgGry: "#292524",
 };

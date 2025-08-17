@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { View, StyleSheet, Animated, Text } from "react-native";
-import { FONTS } from "../theme"; // make sure this has correct mappings
+import { COLORS, FONTS } from "../theme"; // make sure this has correct mappings
 
 const SplashScreen = () => {
   const fadeAnim = useRef(new Animated.Value(0)).current; // opacity
@@ -57,25 +57,25 @@ export default SplashScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#000",
+    backgroundColor: COLORS.black,
     justifyContent: "center",
     alignItems: "center",
   },
   title: {
-    color: "#fff",
+    color: COLORS.white,
     fontSize: 42,
     fontFamily: FONTS?.extraBold || "System",
     letterSpacing: 2,
   },
   subtitle: {
-    color: "#fff",
+    color: COLORS.white,
     fontSize: 16,
     marginTop: 4,
     fontFamily: FONTS?.regular || "System",
     letterSpacing: 1.5,
   },
   loading: {
-    color: "#fff",
+    color: COLORS.white,
     fontSize: 12,
     marginTop: 8,
     fontFamily: FONTS?.regular || "System",

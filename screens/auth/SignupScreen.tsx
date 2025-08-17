@@ -34,7 +34,7 @@ export default function SignupScreen() {
 
   return (
     <LinearGradient
-      colors={[COLORS.background, COLORS.background]}
+      colors={[COLORS.black, COLORS.black]}
       style={styles.gradient}
     >
       <KeyboardAvoidingView
@@ -56,7 +56,7 @@ export default function SignupScreen() {
           <TextInput
             style={styles.input}
             placeholder="Email"
-            placeholderTextColor={COLORS.textLight}
+            placeholderTextColor={COLORS.black}
             value={email}
             onChangeText={setEmail}
             keyboardType="email-address"
@@ -68,7 +68,7 @@ export default function SignupScreen() {
             <TextInput
               style={styles.inputFlex}
               placeholder="Mobile"
-              placeholderTextColor={COLORS.textLight}
+              placeholderTextColor={COLORS.black}
               value={mobile}
               onChangeText={setMobile}
               keyboardType="phone-pad"
@@ -80,7 +80,7 @@ export default function SignupScreen() {
             <TextInput
               style={styles.inputFlex}
               placeholder="Password"
-              placeholderTextColor={COLORS.textLight}
+              placeholderTextColor={COLORS.black}
               secureTextEntry={!showPassword}
               value={password}
               onChangeText={setPassword}
@@ -92,7 +92,7 @@ export default function SignupScreen() {
               <Ionicons
                 name={showPassword ? "eye" : "eye-off"}
                 size={22}
-                color={COLORS.textLight}
+                color={COLORS.black}
               />
             </TouchableOpacity>
           </View>
@@ -102,7 +102,7 @@ export default function SignupScreen() {
             <TextInput
               style={styles.inputFlex}
               placeholder="Confirm Password"
-              placeholderTextColor={COLORS.textLight}
+              placeholderTextColor={COLORS.black}
               secureTextEntry={!showCPassword}
               value={cPassword}
               onChangeText={setCPassword}
@@ -114,7 +114,7 @@ export default function SignupScreen() {
               <Ionicons
                 name={showCPassword ? "eye" : "eye-off"}
                 size={22}
-                color={COLORS.textLight}
+                color={COLORS.black}
               />
             </TouchableOpacity>
           </View>
@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   card: {
-    backgroundColor: COLORS.background,
+    backgroundColor: COLORS.black,
     padding: 20,
     borderRadius: 20,
     shadowColor: "#000",
@@ -171,9 +171,9 @@ const styles = StyleSheet.create({
     padding: 12,
     fontSize: 16,
     fontFamily: FONTS.regular,
-    color: COLORS.textDark,
+    color: COLORS.black,
     marginBottom: 15,
-    backgroundColor: COLORS.surface,
+    backgroundColor: COLORS.white,
   },
   inputRow: {
     flexDirection: "row",
@@ -181,7 +181,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: COLORS.border,
     borderRadius: 10,
-    backgroundColor: COLORS.surface,
+    backgroundColor: COLORS.white,
     marginBottom: 15,
     paddingRight: 10,
   },
@@ -190,33 +190,33 @@ const styles = StyleSheet.create({
     padding: 12,
     fontSize: 16,
     fontFamily: FONTS.regular,
-    color: COLORS.textDark,
+    color: COLORS.black,
   },
   countryCode: {
     fontSize: 16,
     fontFamily: FONTS.medium,
-    color: COLORS.textDark,
+    color: COLORS.black,
     marginLeft: 10,
     marginRight: 6,
   },
   iconBtn: { padding: 6 },
   button: {
-    backgroundColor: COLORS.surface,
+    backgroundColor: COLORS.white,
     paddingVertical: 14,
     borderRadius: 10,
     marginTop: 5,
   },
   buttonText: {
     textAlign: "center",
-    color: COLORS.textDark,
+    color: COLORS.black,
     fontFamily: FONTS.semiBold,
     fontSize: 16,
   },
   link: {
     textAlign: "center",
     marginTop: 20,
-    color: COLORS.surface,
+    color: COLORS.white,
     fontFamily: FONTS.light,
   },
-  linkHighlight: { color: COLORS.surface, fontFamily: FONTS.medium },
+  linkHighlight: { color: COLORS.white, fontFamily: FONTS.medium },
 });

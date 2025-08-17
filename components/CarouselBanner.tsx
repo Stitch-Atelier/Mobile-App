@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 4,
   },
   activeDot: {
-    backgroundColor: COLORS.background,
+    backgroundColor: COLORS.black,
     width: 16,
   },
 });

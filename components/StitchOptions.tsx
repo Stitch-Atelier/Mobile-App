@@ -80,21 +80,21 @@ const styles = StyleSheet.create({
     alignItems: "center", // center text
   },
   selectedButton: {
-    backgroundColor: COLORS.primaryLight,
-    borderColor: COLORS.primaryLight,
+    backgroundColor: COLORS.white,
+    borderColor: COLORS.white,
   },
   unselectedButton: {
-    backgroundColor: COLORS.background,
-    borderColor: COLORS.text,
+    backgroundColor: COLORS.black,
+    borderColor: COLORS.white,
   },
   buttonText: {
     fontSize: 14,
     fontFamily: "latoB",
   },
   selectedText: {
-    color: COLORS.textDark,
+    color: COLORS.black,
   },
   unselectedText: {
-    color: COLORS.text,
+    color: COLORS.white,
   },
 });

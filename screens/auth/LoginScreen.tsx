@@ -31,7 +31,7 @@ export default function LoginScreen() {
 
   return (
     <LinearGradient
-      colors={[COLORS.background, COLORS.background]}
+      colors={[COLORS.black, COLORS.black]}
       style={styles.gradient}
     >
       <KeyboardAvoidingView
@@ -54,7 +54,7 @@ export default function LoginScreen() {
             <TextInput
               style={styles.inputFlex}
               placeholder="Mobile"
-              placeholderTextColor={COLORS.textLight}
+              placeholderTextColor={COLORS.black}
               value={userVal}
               onChangeText={setUserVal}
               keyboardType="phone-pad"
@@ -67,7 +67,7 @@ export default function LoginScreen() {
             <TextInput
               style={styles.inputFlex}
               placeholder="Password"
-              placeholderTextColor={COLORS.textLight}
+              placeholderTextColor={COLORS.black}
               secureTextEntry={!showPassword}
               value={password}
               onChangeText={setPassword}
@@ -79,7 +79,7 @@ export default function LoginScreen() {
               <Ionicons
                 name={showPassword ? "eye" : "eye-off"}
                 size={22}
-                color={COLORS.textLight}
+                color={COLORS.black}
               />
             </TouchableOpacity>
           </View>
@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
   countryCode: {
     fontSize: 16,
     fontFamily: FONTS.medium,
-    color: COLORS.textDark,
+    color: COLORS.black,
     marginLeft: 10,
     marginRight: 6,
   },
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   card: {
-    backgroundColor: COLORS.background,
+    backgroundColor: COLORS.black,
     padding: 20,
     borderRadius: 20,
     shadowColor: "#000",
@@ -142,9 +142,9 @@ const styles = StyleSheet.create({
     padding: 12,
     fontSize: 16,
     fontFamily: FONTS.regular,
-    color: COLORS.textDark,
+    color: COLORS.black,
     marginBottom: 15,
-    backgroundColor: COLORS.surface,
+    backgroundColor: COLORS.white,
   },
   inputRow: {
     flexDirection: "row",
@@ -152,7 +152,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: COLORS.border,
     borderRadius: 10,
-    backgroundColor: COLORS.surface,
+    backgroundColor: COLORS.white,
     marginBottom: 15,
     paddingRight: 10,
   },
@@ -161,7 +161,7 @@ const styles = StyleSheet.create({
     padding: 12,
     fontSize: 16,
     fontFamily: FONTS.regular,
-    color: COLORS.textDark,
+    color: COLORS.black,
   },
   iconBtn: { padding: 6 },
   passwordContainer: {
@@ -170,7 +170,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: COLORS.border,
     borderRadius: 10,
-    backgroundColor: COLORS.background,
+    backgroundColor: COLORS.black,
     marginBottom: 15,
   },
   showHideButton: {
@@ -180,26 +180,26 @@ const styles = StyleSheet.create({
   },
   showHideText: {
     fontFamily: FONTS.medium,
-    color: COLORS.background,
+    color: COLORS.black,
     fontSize: 14,
   },
   button: {
-    backgroundColor: COLORS.surface,
+    backgroundColor: COLORS.white,
     paddingVertical: 14,
     borderRadius: 10,
     marginTop: 5,
   },
   buttonText: {
     textAlign: "center",
-    color: COLORS.textDark,
+    color: COLORS.black,
     fontFamily: FONTS.semiBold,
     fontSize: 16,
   },
   link: {
     textAlign: "center",
     marginTop: 20,
-    color: COLORS.surface,
+    color: COLORS.white,
     fontFamily: FONTS.light,
   },
-  linkHighlight: { color: COLORS.surface, fontFamily: FONTS.medium },
+  linkHighlight: { color: COLORS.white, fontFamily: FONTS.medium },
 });

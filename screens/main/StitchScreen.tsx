@@ -45,8 +45,8 @@ export default function StitchScreen() {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: COLORS.background,
-    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0, // 👈 Fix for Android
+    backgroundColor: COLORS.black,
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0.1,
   },
   scrollContent: {
     paddingBottom: 20,

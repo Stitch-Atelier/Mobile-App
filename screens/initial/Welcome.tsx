@@ -37,7 +37,7 @@ const Welcome = () => {
 
       {/* Bottom Section with Gradient */}
       <LinearGradient
-        colors={[COLORS.primaryLight, COLORS.primaryDark]}
+        colors={[COLORS.lilac, COLORS.gradientViolet]}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
         style={styles.bottomContainer}
@@ -51,7 +51,7 @@ const Welcome = () => {
           }}
           style={styles.loginButton}
         >
-          <Ionicons name="call" size={20} color="#fff" style={styles.icon} />
+          <Ionicons name="call" size={20} color="black" style={styles.icon} />
           <Text style={styles.loginButtonText}>
             LOGIN/SIGNUP WITH MOBILE NUMBER
           </Text>
@@ -84,7 +84,7 @@ export default Welcome;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.background,
+    backgroundColor: COLORS.black,
   },
   topContainer: {
     flex: 0.6,
@@ -124,13 +124,13 @@ const styles = StyleSheet.create({
   loginText: {
     fontSize: 32,
     fontFamily: FONTS.extraBold,
-    color: COLORS.text,
+    color: COLORS.white,
     marginBottom: 15,
   },
   loginButton: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#5e42d3",
+    backgroundColor: COLORS.white,
     paddingVertical: 12,
     paddingHorizontal: 20,
     borderRadius: 30,
@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
   loginButtonText: {
-    color: "#fff",
+    color: COLORS.black,
     fontSize: 14,
     fontFamily: FONTS.latoB,
   },
@@ -152,7 +152,7 @@ const styles = StyleSheet.create({
   footerText: {
     fontSize: 16,
     fontFamily: FONTS.medium,
-    color: "#f0f0f0",
+    color: COLORS.white,
     textAlign: "center",
     marginTop: 15,
   },

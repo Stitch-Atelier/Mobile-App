@@ -43,7 +43,7 @@ export default GetStarted;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.background,
+    backgroundColor: COLORS.black,
   },
   backgroundImage: {
     flex: 1, // fills the SafeArea only
@@ -60,19 +60,19 @@ const styles = StyleSheet.create({
   welcomeText: {
     fontSize: 28,
     fontFamily: FONTS.boldItalic,
-    color: COLORS.text,
+    color: COLORS.white,
     marginBottom: 10,
     textAlign: "center",
   },
   welcomeSubText: {
     fontSize: 20,
     fontFamily: FONTS.medium,
-    color: COLORS.text,
+    color: COLORS.white,
     marginBottom: 20,
     textAlign: "center",
   },
   button: {
-    backgroundColor: COLORS.background, // changed for better contrast
+    backgroundColor: COLORS.black, // changed for better contrast
     paddingVertical: 12,
     paddingHorizontal: 20,
     borderRadius: 30,
@@ -85,6 +85,6 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 18,
     fontFamily: FONTS.semiBold,
-    color: "#fff",
+    color: COLORS.white,
   },
 });
