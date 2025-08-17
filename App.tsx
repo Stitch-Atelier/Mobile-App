@@ -1,15 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import AuthStack from "./navigation/AuthStack";
 import MainTabs from "./navigation/MainTabs";
 import * as Font from "expo-font";
 import SplashScreen from "./screens/SplashScreen";
+import GetStarted from "./screens/initial/GetStarted";
+import Welcome from "./screens/initial/Welcome";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
+
+  const isUserLoggedIn = false; // Replace with your actual auth logic
 
   const [fontsLoaded] = Font.useFonts({
     PlayBold: require("./assets/fonts/Playfair-Bold.ttf"),
@@ -23,6 +27,8 @@ export default function App() {
     PlayRegular: require("./assets/fonts/Playfair-Regular.ttf"),
     PlaySemiBold: require("./assets/fonts/Playfair-SemiBold.ttf"),
     PlaySemiBoldI: require("./assets/fonts/Playfair-SemiBoldItalic.ttf"),
+    LatoR: require("./assets/fonts/Lato-Regular.ttf"),
+    LatoB: require("./assets/fonts/Lato-Bold.ttf"),
   });
 
   useEffect(() => {
@@ -46,9 +52,15 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
-        {/* 👉 Replace this check with your auth logic */}
-        {/* <Stack.Screen name="AuthStack" component={AuthStack} /> */}
-        <Stack.Screen name="MainTabs" component={MainTabs} />
+        {isUserLoggedIn ? (
+          <Stack.Screen name="MainTabs" component={MainTabs} />
+        ) : (
+          <>
+            <Stack.Screen name="GetStarted" component={GetStarted} />
+            <Stack.Screen name="Welcome" component={Welcome} />
+            <Stack.Screen name="AuthStack" component={AuthStack} />
+          </>
+        )}
       </Stack.Navigator>
     </NavigationContainer>
   );

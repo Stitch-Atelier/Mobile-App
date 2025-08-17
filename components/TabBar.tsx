@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
     marginTop: -25, // float above bar
   },
   stitchButton: {
-    backgroundColor: COLORS.primary, // highlight color
+    backgroundColor: COLORS.background, // highlight color
     borderRadius: 35,
     borderWidth: 2,
     borderColor: "white",

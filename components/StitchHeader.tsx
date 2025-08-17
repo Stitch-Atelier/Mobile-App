@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
-import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
+
 import { COLORS, FONTS } from "../theme";
 import LogoText from "./LogoText";
 
@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: COLORS.primaryDark,
+    backgroundColor: COLORS.background,
     margin: 10,
     borderRadius: 12,
   },

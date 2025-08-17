@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import * as Animatable from "react-native-animatable";
-import { COLORS, FONTS } from "../theme";
+import { COLORS, FONTS } from "../../theme";
 import { useNavigation } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -31,7 +31,7 @@ export default function LoginScreen() {
 
   return (
     <LinearGradient
-      colors={[COLORS.primary, COLORS.primaryDark]}
+      colors={[COLORS.background, COLORS.background]}
       style={styles.gradient}
     >
       <KeyboardAvoidingView
@@ -49,15 +49,18 @@ export default function LoginScreen() {
           delay={200}
           style={styles.card}
         >
-          <TextInput
-            style={styles.input}
-            placeholder="Email or Mobile"
-            placeholderTextColor={COLORS.textLight}
-            value={userVal}
-            onChangeText={setUserVal}
-            keyboardType="email-address"
-            autoCapitalize="none"
-          />
+          <View style={styles.inputRow}>
+            <Text style={styles.countryCode}>+91</Text>
+            <TextInput
+              style={styles.inputFlex}
+              placeholder="Mobile"
+              placeholderTextColor={COLORS.textLight}
+              value={userVal}
+              onChangeText={setUserVal}
+              keyboardType="phone-pad"
+              autoCapitalize="none"
+            />
+          </View>
 
           {/* Password Field with Toggle */}
           <View style={styles.inputRow}>
@@ -108,6 +111,13 @@ const styles = StyleSheet.create({
     color: "#fff",
     textAlign: "center",
   },
+  countryCode: {
+    fontSize: 16,
+    fontFamily: FONTS.medium,
+    color: COLORS.textDark,
+    marginLeft: 10,
+    marginRight: 6,
+  },
   subtitle: {
     fontSize: 16,
     color: "#d1fae5",
@@ -116,7 +126,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   card: {
-    backgroundColor: COLORS.surface,
+    backgroundColor: COLORS.background,
     padding: 20,
     borderRadius: 20,
     shadowColor: "#000",
@@ -132,9 +142,9 @@ const styles = StyleSheet.create({
     padding: 12,
     fontSize: 16,
     fontFamily: FONTS.regular,
-    color: COLORS.text,
+    color: COLORS.textDark,
     marginBottom: 15,
-    backgroundColor: COLORS.background,
+    backgroundColor: COLORS.surface,
   },
   inputRow: {
     flexDirection: "row",
@@ -142,7 +152,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: COLORS.border,
     borderRadius: 10,
-    backgroundColor: COLORS.background,
+    backgroundColor: COLORS.surface,
     marginBottom: 15,
     paddingRight: 10,
   },
@@ -151,7 +161,7 @@ const styles = StyleSheet.create({
     padding: 12,
     fontSize: 16,
     fontFamily: FONTS.regular,
-    color: COLORS.text,
+    color: COLORS.textDark,
   },
   iconBtn: { padding: 6 },
   passwordContainer: {
@@ -170,26 +180,26 @@ const styles = StyleSheet.create({
   },
   showHideText: {
     fontFamily: FONTS.medium,
-    color: COLORS.primary,
+    color: COLORS.background,
     fontSize: 14,
   },
   button: {
-    backgroundColor: COLORS.primary,
+    backgroundColor: COLORS.surface,
     paddingVertical: 14,
     borderRadius: 10,
     marginTop: 5,
   },
   buttonText: {
     textAlign: "center",
-    color: "#fff",
+    color: COLORS.textDark,
     fontFamily: FONTS.semiBold,
     fontSize: 16,
   },
   link: {
     textAlign: "center",
     marginTop: 20,
-    color: COLORS.textLight,
+    color: COLORS.surface,
     fontFamily: FONTS.light,
   },
-  linkHighlight: { color: COLORS.primary, fontFamily: FONTS.medium },
+  linkHighlight: { color: COLORS.surface, fontFamily: FONTS.medium },
 });

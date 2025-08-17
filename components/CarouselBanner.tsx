@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     width: width - 20,
     height: 200,
     marginHorizontal: 10,
-    borderRadius: 12,
+    borderRadius: 40,
     overflow: "hidden",
     backgroundColor: COLORS.border,
   },
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 4,
   },
   activeDot: {
-    backgroundColor: COLORS.primary,
+    backgroundColor: COLORS.background,
     width: 16,
   },
 });

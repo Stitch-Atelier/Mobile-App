@@ -11,7 +11,6 @@ import { COLORS } from "../../theme";
 import StitchHeader from "../../components/StitchHeader";
 import CarouselBanner from "../../components/CarouselBanner";
 import StitchOptions from "../../components/StitchOptions";
-import StitchStory from "../../components/StitchStory";
 
 export default function StitchScreen() {
   return (
@@ -19,8 +18,8 @@ export default function StitchScreen() {
       {/* StatusBar Config */}
       <StatusBar
         translucent
-        backgroundColor="transparent"
-        barStyle="dark-content" // change to "light-content" if needed
+        backgroundColor="white"
+        barStyle="light-content" // change to "light-content" if needed
       />
 
       {/* Fixed Header & Search */}
@@ -37,9 +36,7 @@ export default function StitchScreen() {
         <View style={styles.section}>
           <StitchOptions />
         </View>
-        <View style={styles.section}>
-          <StitchStory />
-        </View>
+        <View style={styles.section}></View>
       </ScrollView>
     </SafeAreaView>
   );
@@ -48,7 +45,7 @@ export default function StitchScreen() {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: COLORS.surface,
+    backgroundColor: COLORS.background,
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0, // 👈 Fix for Android
   },
   scrollContent: {

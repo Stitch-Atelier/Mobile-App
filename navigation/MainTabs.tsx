@@ -23,16 +23,3 @@ export default function MainTabs() {
     </Tab.Navigator>
   );
 }
-
-// screenOptions={({ route }: any) => ({
-//   tabBarIcon: ({ color, size }: { color: string; size: number }) => {
-//     let iconName: any;
-//     if (route.name === "Stitch") iconName = "cut-outline";
-//     else if (route.name === "Explore") iconName = "compass-outline";
-//     else if (route.name === "Profile") iconName = "person-outline";
-//     return <Ionicons name={iconName} size={size} color={color} />;
-//   },
-//   tabBarActiveTintColor: COLORS.primary,
-//   tabBarInactiveTintColor: COLORS.textLight,
-//   headerShown: false,
-//   headerStatusBarHeight: 10,})

@@ -47,7 +47,7 @@ const SplashScreen = () => {
       >
         BUILT AROUND YOU
       </Animated.Text>
-      <Text style={styles.subtitle}>Loading...</Text>
+      <Text style={styles.loading}>Loading...</Text>
     </View>
   );
 };
@@ -70,7 +70,14 @@ const styles = StyleSheet.create({
   subtitle: {
     color: "#fff",
     fontSize: 16,
-    marginTop: 10,
+    marginTop: 4,
+    fontFamily: FONTS?.regular || "System",
+    letterSpacing: 1.5,
+  },
+  loading: {
+    color: "#fff",
+    fontSize: 12,
+    marginTop: 8,
     fontFamily: FONTS?.regular || "System",
     letterSpacing: 1.5,
   },

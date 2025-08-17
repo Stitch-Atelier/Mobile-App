@@ -5,20 +5,17 @@ import {
   TouchableOpacity,
   StyleSheet,
   ScrollView,
+  Dimensions,
 } from "react-native";
 import { COLORS } from "../theme";
 
+const { width } = Dimensions.get("window");
+
 const buttons = [
-  { label: "Stitch Story", onPress: () => console.log("Button 1 Pressed") },
-  {
-    label: "The Stitch Promise",
-    onPress: () => console.log("Button 2 Pressed"),
-  },
-  {
-    label: "The Price Promise",
-    onPress: () => console.log("Button 3 Pressed"),
-  },
-  { label: "Rewards", onPress: () => console.log("Button 4 Pressed") },
+  { label: "Stitch", onPress: () => console.log("Button 1 Pressed") },
+  { label: "Offers", onPress: () => console.log("Button 2 Pressed") },
+  { label: "Pricing", onPress: () => console.log("Button 3 Pressed") },
+  { label: "Shortcuts", onPress: () => console.log("Button 4 Pressed") },
 ];
 
 const StitchOptions = () => {
@@ -38,6 +35,7 @@ const StitchOptions = () => {
               key={index}
               style={[
                 styles.button,
+                { width: width / buttons.length - 20 }, // 👈 dynamic width
                 isSelected ? styles.selectedButton : styles.unselectedButton,
               ]}
               onPress={() => {
@@ -69,31 +67,34 @@ const styles = StyleSheet.create({
   },
   scrollContainer: {
     flexDirection: "row",
+    justifyContent: "space-evenly", // 👈 distribute evenly
+    alignItems: "stretch",
     paddingHorizontal: 10,
   },
   button: {
     paddingVertical: 8,
-    paddingHorizontal: 12,
-    borderRadius: 12,
+    paddingHorizontal: 4,
+    borderRadius: 20,
     marginRight: 10,
-    borderWidth: 1,
+    borderWidth: 0.5,
+    alignItems: "center", // center text
   },
   selectedButton: {
-    backgroundColor: COLORS.primaryDark,
-    borderColor: COLORS.primaryDark,
+    backgroundColor: COLORS.primaryLight,
+    borderColor: COLORS.primaryLight,
   },
   unselectedButton: {
-    backgroundColor: "#fff",
-    borderColor: COLORS.primaryDark,
+    backgroundColor: COLORS.background,
+    borderColor: COLORS.text,
   },
   buttonText: {
     fontSize: 14,
-    fontFamily: "PlaySemiBold",
+    fontFamily: "latoB",
   },
   selectedText: {
-    color: "#fff",
+    color: COLORS.textDark,
   },
   unselectedText: {
-    color: COLORS.primaryDark,
+    color: COLORS.text,
   },
 });
