@@ -2,9 +2,10 @@ import React, { useEffect } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 // import LoginScreen from "../screens/auth/LoginScreen";
 // import SignupScreen from "../screens/auth/SignupScreen";
-import EnterMobile from "../screens/auth/EnterMobile";
-import EnterOTP from "../screens/auth/EnterOTP";
-import Name from "../screens/auth/Name";
+// import EnterMobile from "../screens/auth/EnterMobile";
+import EnterMobile from "../screens/initial/EnterMobile";
+import EnterOTP from "../screens/initial/EnterOTP";
+import Name from "../screens/initial/Name";
 export type AuthStackParamList = {
   EnterMobile: undefined;
   EnterOTP: undefined;
