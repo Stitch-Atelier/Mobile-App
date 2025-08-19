@@ -42,7 +42,7 @@ const Welcome = () => {
         end={{ x: 1, y: 0 }}
         style={styles.bottomContainer}
       >
-        <Text style={styles.loginText}>LOGIN</Text>
+        <Text style={styles.loginText}>LOGIN/SIGNUP</Text>
 
         {/* Mobile Login Button */}
         <TouchableOpacity
@@ -102,8 +102,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   title: {
-    fontSize: 22,
-    fontFamily: FONTS.extraBold,
+    fontSize: 36,
+    fontFamily: FONTS.boldItalic,
     color: "#fff",
   },
   subTitle: {

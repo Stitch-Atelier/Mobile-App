@@ -7,18 +7,20 @@ import {
   SafeAreaView,
   TouchableOpacity,
 } from "react-native";
-import { useNavigation } from "@react-navigation/native"; // 👈 import hook
+import { useNavigation } from "@react-navigation/native";
 import { COLORS, FONTS } from "../../theme";
 
 const GetStarted = () => {
-  const navigation = useNavigation(); // 👈 access navigation
+  const navigation = useNavigation();
 
   return (
     <SafeAreaView style={styles.container}>
-      <Image
-        source={require("../../assets/getstarted.jpg")}
-        style={styles.backgroundImage}
-      />
+      <View style={styles.imageContainer}>
+        <Image
+          source={require("../../assets/getstarted.jpg")}
+          style={styles.backgroundImage}
+        />
+      </View>
 
       {/* Overlay Content */}
       <View style={styles.overlay}>
@@ -26,9 +28,7 @@ const GetStarted = () => {
         <Text style={styles.welcomeSubText}>Period</Text>
 
         <TouchableOpacity
-          onPress={() => {
-            navigation.navigate("Welcome" as never); // 👈 navigate
-          }}
+          onPress={() => navigation.navigate("Welcome" as never)}
           style={styles.button}
         >
           <Text style={styles.buttonText}>Get Started</Text>
@@ -45,14 +45,19 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: COLORS.black,
   },
+  imageContainer: {
+    flex: 1,
+    justifyContent: "center", // center vertically
+    alignItems: "center", // center horizontally
+  },
   backgroundImage: {
-    flex: 1, // fills the SafeArea only
     width: "100%",
-    resizeMode: "cover",
+    height: "100%",
+    resizeMode: "contain", // ✅ keep full image visible
   },
   overlay: {
     position: "absolute",
-    bottom: 60, // keeps it above bottom nav area
+    bottom: 120, // stays above bottom nav buttons
     left: 0,
     right: 0,
     alignItems: "center",
@@ -65,26 +70,26 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   welcomeSubText: {
-    fontSize: 20,
+    fontSize: 28,
     fontFamily: FONTS.medium,
     color: COLORS.white,
     marginBottom: 20,
     textAlign: "center",
   },
   button: {
-    backgroundColor: COLORS.black, // changed for better contrast
+    backgroundColor: COLORS.black,
     paddingVertical: 12,
     paddingHorizontal: 20,
     borderRadius: 30,
-    elevation: 4, // Android shadow
-    shadowColor: "#000", // iOS shadow
+    elevation: 4,
+    shadowColor: "#000",
     shadowOpacity: 0.2,
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 6,
   },
   buttonText: {
     fontSize: 18,
-    fontFamily: FONTS.semiBold,
+    fontFamily: FONTS.latoB,
     color: COLORS.white,
   },
 });
