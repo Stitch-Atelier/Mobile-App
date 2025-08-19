@@ -12,10 +12,13 @@ import React, { useState, useRef } from "react";
 import StitchHeader from "../../components/StitchHeader";
 import { COLORS, FONTS } from "../../theme";
 import * as Animatable from "react-native-animatable";
+import { useNavigation } from "@react-navigation/native";
 
 const EnterOTP = () => {
   const [otp, setOtp] = useState(["", "", "", ""]);
   const inputRefs = useRef<TextInput[]>([]);
+
+  const navigation = useNavigation();
 
   const handleChange = (text: string, index: number) => {
     if (/^\d$/.test(text)) {
@@ -37,6 +40,7 @@ const EnterOTP = () => {
   const handleVerify = () => {
     const enteredOtp = otp.join("");
     console.log("Entered OTP:", enteredOtp);
+    navigation.navigate("Name" as never);
     // verify logic here
   };
 
