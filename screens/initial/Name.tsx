@@ -17,7 +17,7 @@ import { COLORS, FONTS } from "../../theme";
 import { useNavigation } from "@react-navigation/native";
 import StitchHeader from "../../components/StitchHeader";
 
-export default function LoginScreen() {
+export default function Name() {
   const navigation = useNavigation();
   const [fName, setFName] = useState("");
   const [lName, setLName] = useState("");

@@ -1,17 +1,14 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-// import LoginScreen from "../screens/auth/LoginScreen";
-// import SignupScreen from "../screens/auth/SignupScreen";
-// import EnterMobile from "../screens/auth/EnterMobile";
 import EnterMobile from "../screens/initial/EnterMobile";
 import EnterOTP from "../screens/initial/EnterOTP";
 import Name from "../screens/initial/Name";
+import MainTabs from "./MainTabs";
 export type AuthStackParamList = {
   EnterMobile: undefined;
   EnterOTP: undefined;
   Name: undefined;
-  // Login: undefined;
-  // Signup: undefined;
+  MainTabs: undefined;
 };
 
 const Stack = createNativeStackNavigator<AuthStackParamList>();
@@ -22,8 +19,7 @@ export default function AuthStack() {
       <Stack.Screen name="EnterMobile" component={EnterMobile} />
       <Stack.Screen name="EnterOTP" component={EnterOTP} />
       <Stack.Screen name="Name" component={Name} />
-      {/* <Stack.Screen name="Signup" component={SignupScreen} />
-      <Stack.Screen name="Login" component={LoginScreen} /> */}
+      <Stack.Screen name="MainTabs" component={MainTabs} />
     </Stack.Navigator>
   );
 }
