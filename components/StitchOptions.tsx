@@ -67,25 +67,26 @@ const styles = StyleSheet.create({
   },
   scrollContainer: {
     flexDirection: "row",
-    justifyContent: "space-evenly", // 👈 distribute evenly
-    alignItems: "stretch",
-    paddingHorizontal: 10,
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 10,
+    marginHorizontal: "auto",
   },
   button: {
-    paddingVertical: 8,
-    paddingHorizontal: 4,
+    padding: 6,
     borderRadius: 20,
-    marginRight: 10,
     borderWidth: 0.5,
     alignItems: "center", // center text
   },
   selectedButton: {
-    backgroundColor: COLORS.white,
-    borderColor: COLORS.white,
+    backgroundColor: COLORS.lilac,
+    borderColor: COLORS.lightViolet,
+    borderWidth: 1,
   },
   unselectedButton: {
     backgroundColor: COLORS.black,
-    borderColor: COLORS.white,
+    borderColor: COLORS.lightViolet,
+    borderWidth: 1,
   },
   buttonText: {
     fontSize: 14,

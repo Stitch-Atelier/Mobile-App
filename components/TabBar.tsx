@@ -1,14 +1,8 @@
 import React from "react";
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-  Platform,
-} from "react-native";
+import { View, Text, StyleSheet, Pressable } from "react-native";
 import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
 import { COLORS, FONTS } from "../theme";
-import { Ionicons } from "@expo/vector-icons"; // you can change icon set
+import { Ionicons } from "@expo/vector-icons"; // icon set
 
 const TabBar = ({ state, descriptors, navigation }: BottomTabBarProps) => {
   return (
@@ -44,7 +38,7 @@ const TabBar = ({ state, descriptors, navigation }: BottomTabBarProps) => {
             });
           };
 
-          // Optional: Map icons to route names
+          // Map icons to route names
           const getIcon = (name: string, isFocused: boolean) => {
             switch (name) {
               case "Home":
@@ -58,45 +52,33 @@ const TabBar = ({ state, descriptors, navigation }: BottomTabBarProps) => {
             }
           };
 
+          // For stitch button we give custom styling with pressed effect
+          const isStitch = route.name === "Stitch";
+
           return (
-            <TouchableOpacity
+            <Pressable
               key={index}
               onPress={onPress}
               onLongPress={onLongPress}
-              style={[
+              style={({ pressed }) => [
                 styles.tabItem,
-                route.name === "Stitch" && styles.stitchWrapper, // special style
+                isStitch && [
+                  styles.stitchButton,
+                  {
+                    backgroundColor: pressed
+                      ? COLORS.lightViolet // Sweet pressed color
+                      : COLORS.lilac, // Default color
+                  },
+                ],
               ]}
             >
-              <View
-                style={
-                  route.name === "Stitch" ? styles.stitchButton : undefined
-                }
-              >
-                <Ionicons
-                  name={getIcon(route.name, isFocused) as any}
-                  size={route.name === "Stitch" ? 28 : 22}
-                  color={isFocused ? "white" : COLORS.white}
-                />
-              </View>
-              {route.name !== "Stitch" && (
-                <Text
-                  style={[
-                    styles.label,
-                    { color: isFocused ? "white" : COLORS.white },
-                  ]}
-                >
-                  {typeof label === "function"
-                    ? label({
-                        focused: isFocused,
-                        color: isFocused ? "white" : COLORS.white,
-                        position: "below-icon",
-                        children: route.name,
-                      })
-                    : label}
-                </Text>
-              )}
-            </TouchableOpacity>
+              <Ionicons
+                name={getIcon(route.name, isFocused) as any}
+                size={isStitch ? 36 : 30}
+                style={{ marginBottom: isStitch ? 0 : 4 }}
+                color={isFocused ? COLORS.black : COLORS.bgGry}
+              />
+            </Pressable>
           );
         })}
       </View>
@@ -109,21 +91,20 @@ export default TabBar;
 const styles = StyleSheet.create({
   wrapper: {
     position: "absolute",
-    bottom: 35,
-    left: 10,
-    right: 10,
+    bottom: 65,
+    left: 70,
+    right: 70,
     alignItems: "center",
   },
-  stitchWrapper: {
-    marginTop: -25, // float above bar
-  },
+
   stitchButton: {
-    backgroundColor: COLORS.black, // highlight color
-    borderRadius: 35,
-    borderWidth: 2,
-    borderColor: "white",
-    width: 60,
-    height: 60,
+    borderRadius: 65,
+    borderWidth: 5,
+    borderColor: COLORS.lightViolet,
+    position: "absolute",
+    width: 80,
+    height: 80,
+    bottom: -5,
     alignItems: "center",
     justifyContent: "center",
     shadowColor: "#000",
@@ -134,9 +115,9 @@ const styles = StyleSheet.create({
   },
   tabBar: {
     flexDirection: "row",
-    backgroundColor: "black",
-    borderRadius: 16,
-    paddingVertical: 12,
+    backgroundColor: COLORS.white,
+    borderRadius: 40,
+    paddingVertical: 16,
     paddingHorizontal: 15,
     justifyContent: "space-around",
     alignItems: "center",
@@ -145,6 +126,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 6,
     elevation: 6,
+    gap: 60,
   },
   tabItem: {
     flex: 1,
