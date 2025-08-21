@@ -11,6 +11,7 @@ import { COLORS } from "../../theme";
 import StitchHeader from "../../components/StitchHeader";
 import CarouselBanner from "../../components/CarouselBanner";
 import StitchOptions from "../../components/StitchOptions";
+import AddressName from "../../components/AddressName";
 
 export default function StitchScreen() {
   return (
@@ -30,6 +31,9 @@ export default function StitchScreen() {
         contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={false}
       >
+        <View style={styles.section}>
+          <AddressName />
+        </View>
         <View style={styles.section}>
           <CarouselBanner />
         </View>
