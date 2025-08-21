@@ -12,6 +12,7 @@ import StitchHeader from "../../components/StitchHeader";
 import CarouselBanner from "../../components/CarouselBanner";
 import StitchOptions from "../../components/StitchOptions";
 import AddressName from "../../components/AddressName";
+import StitchStory from "../../components/StitchStory";
 
 export default function StitchScreen() {
   return (
@@ -19,28 +20,30 @@ export default function StitchScreen() {
       {/* StatusBar Config */}
       <StatusBar
         translucent
-        backgroundColor="white"
-        barStyle="light-content" // change to "light-content" if needed
+        backgroundColor="transparent"
+        barStyle="light-content"
       />
 
-      {/* Fixed Header & Search */}
+      {/* Fixed Header */}
       <StitchHeader />
+      <AddressName />
 
       {/* Scrollable Content */}
       <ScrollView
+        style={styles.scrollView}
         contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={false}
       >
-        <View style={styles.section}>
-          <AddressName />
-        </View>
         <View style={styles.section}>
           <CarouselBanner />
         </View>
         <View style={styles.section}>
           <StitchOptions />
         </View>
-        <View style={styles.section}></View>
+        <View style={styles.section}>
+          <StitchStory />
+        </View>
+        <View style={{ height: 100 }} />
       </ScrollView>
     </SafeAreaView>
   );
@@ -50,12 +53,16 @@ const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
     backgroundColor: COLORS.black,
-    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0.1,
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+  },
+  scrollView: {
+    flex: 1,
+    backgroundColor: COLORS.black,
   },
   scrollContent: {
-    paddingBottom: 20,
+    paddingBottom: 40,
   },
   section: {
-    marginTop: 4,
+    marginVertical: 8,
   },
 });
