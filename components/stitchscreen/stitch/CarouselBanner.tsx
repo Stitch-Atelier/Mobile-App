@@ -73,16 +73,6 @@ export default function CarouselBanner() {
           </View>
         ))}
       </ScrollView>
-
-      {/* Pagination Dots */}
-      {/* <View style={styles.pagination}>
-        {images.map((_, index) => (
-          <View
-            key={index}
-            style={[styles.dot, activeIndex === index && styles.activeDot]}
-          />
-        ))}
-      </View> */}
     </View>
   );
 }
@@ -97,20 +87,4 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.border,
   },
   image: { width: "100%", height: "100%" },
-  pagination: {
-    flexDirection: "row",
-    justifyContent: "center",
-    marginTop: 8,
-  },
-  dot: {
-    width: 8,
-    height: 8,
-    borderRadius: 4,
-    backgroundColor: COLORS.border,
-    marginHorizontal: 4,
-  },
-  activeDot: {
-    backgroundColor: COLORS.black,
-    width: 16,
-  },
 });

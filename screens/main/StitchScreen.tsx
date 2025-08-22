@@ -1,6 +1,7 @@
 import React from "react";
 import {
   View,
+  Text,
   StyleSheet,
   SafeAreaView,
   ScrollView,
@@ -15,7 +16,11 @@ import AddressName from "../../components/AddressName";
 import StitchStory from "../../components/stitchscreen/stitch/StitchStory";
 import OurNumbers from "../../components/stitchscreen/stitch/OurNumbers";
 import MadeWithLove from "../../components/MadeWithLove";
+import DiscountList from "../../components/stitchscreen/discounts/DiscountList";
+
 export default function StitchScreen() {
+  const [optionSelected, setOptionSelected] = React.useState(0);
+
   return (
     <SafeAreaView style={styles.safeArea}>
       {/* StatusBar Config */}
@@ -27,7 +32,11 @@ export default function StitchScreen() {
 
       {/* Fixed Header */}
       <StitchHeader />
-      <AddressName />
+
+      {/* Address block just below header */}
+      <View style={styles.addressWrapper}>
+        <AddressName />
+      </View>
 
       {/* Scrollable Content */}
       <ScrollView
@@ -35,22 +44,56 @@ export default function StitchScreen() {
         contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={false}
       >
+        {/* Carousel */}
         <View style={styles.section}>
           <CarouselBanner />
         </View>
+
+        {/* Options */}
         <View style={styles.section}>
-          <StitchOptions />
+          <StitchOptions
+            selectedIndex={optionSelected}
+            onSelect={setOptionSelected}
+          />
         </View>
+
+        {/* Content based on tab selection */}
         <View style={styles.section}>
-          <StitchStory />
+          {optionSelected === 0 && (
+            <>
+              <View style={styles.section}>
+                <StitchStory />
+              </View>
+              <View style={styles.section}>
+                <OurNumbers />
+              </View>
+            </>
+          )}
+
+          {optionSelected === 1 && (
+            <View style={styles.centerContent}>
+              <Text style={styles.textWhite}>Shortcuts Content</Text>
+            </View>
+          )}
+
+          {optionSelected === 2 && (
+            <View style={styles.centerContent}>
+              <Text style={styles.textWhite}>Pricing Content</Text>
+            </View>
+          )}
+
+          {optionSelected === 3 && (
+            <View style={styles.section}>
+              <DiscountList />
+            </View>
+          )}
         </View>
-        <View style={styles.section}>
-          <OurNumbers />
-        </View>
+
+        {/* Bottom Spacer */}
         <View style={styles.section}>
           <MadeWithLove />
         </View>
-        <View style={{ height: 100 }} />
+        <View style={{ height: 80 }} />
       </ScrollView>
     </SafeAreaView>
   );
@@ -62,14 +105,26 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.black,
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
+  addressWrapper: {
+    marginHorizontal: 12,
+    marginTop: 8,
+  },
   scrollView: {
     flex: 1,
-    backgroundColor: COLORS.black,
   },
   scrollContent: {
     paddingBottom: 40,
   },
   section: {
     marginVertical: 8,
+  },
+  centerContent: {
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 20,
+  },
+  textWhite: {
+    color: COLORS.white,
+    fontSize: 16,
   },
 });

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Dispatch, FC, SetStateAction } from "react";
 import {
   View,
   Text,
@@ -12,15 +12,21 @@ import { COLORS } from "../theme";
 const { width } = Dimensions.get("window");
 
 const buttons = [
-  { label: "Stitch", onPress: () => console.log("Button 1 Pressed") },
-  { label: "Offers", onPress: () => console.log("Button 2 Pressed") },
-  { label: "Pricing", onPress: () => console.log("Button 3 Pressed") },
-  { label: "Shortcuts", onPress: () => console.log("Button 4 Pressed") },
+  { label: "Stitch" },
+  { label: "Shortcuts" },
+  { label: "Pricing" },
+  { label: "Discounts" },
 ];
 
-const StitchOptions = () => {
-  const [selectedIndex, setSelectedIndex] = useState(0);
+type StitchOptionsProps = {
+  selectedIndex: number;
+  onSelect: any;
+};
 
+const StitchOptions: React.FC<StitchOptionsProps> = ({
+  selectedIndex,
+  onSelect,
+}) => {
   return (
     <View style={styles.container}>
       <ScrollView
@@ -32,22 +38,20 @@ const StitchOptions = () => {
           const isSelected = selectedIndex === index;
           return (
             <TouchableOpacity
-              key={index}
+              key={btn.label}
               style={[
                 styles.button,
-                { width: width / buttons.length - 20 }, // 👈 dynamic width
+                { minWidth: 80 }, // ensures space but flexible
                 isSelected ? styles.selectedButton : styles.unselectedButton,
               ]}
-              onPress={() => {
-                setSelectedIndex(index);
-                btn.onPress();
-              }}
+              onPress={() => onSelect(index)}
             >
               <Text
                 style={[
                   styles.buttonText,
                   isSelected ? styles.selectedText : styles.unselectedText,
                 ]}
+                ellipsizeMode="tail"
               >
                 {btn.label}
               </Text>
@@ -69,15 +73,18 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    gap: 10,
+    gap: 8,
     marginHorizontal: "auto",
   },
   button: {
-    padding: 6,
+    padding: 10,
     borderRadius: 20,
     borderWidth: 0.5,
-    alignItems: "center", // center text
+    alignItems: "center",
+    justifyContent: "center",
+    flexShrink: 0,
   },
+
   selectedButton: {
     backgroundColor: COLORS.lilac,
     borderColor: COLORS.lightViolet,
