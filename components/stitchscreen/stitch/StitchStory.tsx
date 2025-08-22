@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, Image } from "react-native";
 import React from "react";
-import { COLORS, FONTS } from "../theme";
+import { COLORS, FONTS } from "../../../theme";
 
 const StitchStory = () => {
   return (
@@ -24,21 +24,23 @@ export default StitchStory;
 
 const styles = StyleSheet.create({
   container: {
-    // backgroundColor: COLORS.black,
-    borderRadius: 40,
+    backgroundColor: COLORS.lilac,
+    padding: 12,
+    borderWidth: 1,
+    borderRadius: 32,
     marginHorizontal: 16,
-    marginVertical: 16,
+    marginTop: 16,
     alignItems: "center",
   },
   heading: {
-    fontSize: 28,
+    fontSize: 30,
     fontFamily: FONTS.boldItalic,
-    color: COLORS.white,
-    marginBottom: 16,
+    color: COLORS.black,
+    marginBottom: 12,
   },
   image: {
     width: "100%",
-    height: 400,
-    borderRadius: 12,
+    height: 200,
+    borderRadius: 28,
   },
 });

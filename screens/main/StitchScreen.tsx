@@ -9,11 +9,12 @@ import {
 } from "react-native";
 import { COLORS } from "../../theme";
 import StitchHeader from "../../components/StitchHeader";
-import CarouselBanner from "../../components/CarouselBanner";
+import CarouselBanner from "../../components/stitchscreen/stitch/CarouselBanner";
 import StitchOptions from "../../components/StitchOptions";
 import AddressName from "../../components/AddressName";
-import StitchStory from "../../components/StitchStory";
-
+import StitchStory from "../../components/stitchscreen/stitch/StitchStory";
+import OurNumbers from "../../components/stitchscreen/stitch/OurNumbers";
+import MadeWithLove from "../../components/MadeWithLove";
 export default function StitchScreen() {
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -42,6 +43,12 @@ export default function StitchScreen() {
         </View>
         <View style={styles.section}>
           <StitchStory />
+        </View>
+        <View style={styles.section}>
+          <OurNumbers />
+        </View>
+        <View style={styles.section}>
+          <MadeWithLove />
         </View>
         <View style={{ height: 100 }} />
       </ScrollView>
