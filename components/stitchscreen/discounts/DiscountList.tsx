@@ -67,12 +67,11 @@ export default DiscountList;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 16,
     flex: 1,
   },
   card: {
     marginBottom: 16,
-    borderRadius: 12,
+    borderRadius: 28,
     overflow: "hidden",
   },
   image: {
@@ -89,7 +88,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: COLORS.white,
-    fontSize: 18,
+    fontSize: 24,
     fontFamily: FONTS.bold,
   },
 });
