@@ -29,7 +29,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 32,
     marginHorizontal: 16,
-    marginTop: 16,
     alignItems: "center",
   },
   heading: {

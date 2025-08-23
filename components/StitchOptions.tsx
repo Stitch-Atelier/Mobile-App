@@ -28,7 +28,7 @@ const StitchOptions: React.FC<StitchOptionsProps> = ({
   onSelect,
 }) => {
   return (
-    <View style={styles.container}>
+    <View>
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
@@ -66,9 +66,6 @@ const StitchOptions: React.FC<StitchOptionsProps> = ({
 export default StitchOptions;
 
 const styles = StyleSheet.create({
-  container: {
-    marginTop: 12,
-  },
   scrollContainer: {
     flexDirection: "row",
     justifyContent: "center",

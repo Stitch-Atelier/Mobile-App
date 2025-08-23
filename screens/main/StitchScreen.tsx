@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
     paddingBottom: 40,
   },
   section: {
-    marginVertical: 8,
+    marginVertical: 10,
   },
   centerContent: {
     alignItems: "center",
