@@ -114,6 +114,7 @@ const styles = StyleSheet.create({
     borderColor: COLORS.white,
     borderWidth: 1,
     padding: 2,
+    marginTop: 10,
   },
   toggleButton: {
     paddingVertical: 8,

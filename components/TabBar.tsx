@@ -1,8 +1,8 @@
 import React from "react";
-import { View, Text, StyleSheet, Pressable } from "react-native";
+import { View, Text, StyleSheet, Pressable, Image } from "react-native";
 import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
 import { COLORS, FONTS } from "../theme";
-import { Ionicons } from "@expo/vector-icons"; // icon set
+import { Ionicons } from "@expo/vector-icons";
 
 const TabBar = ({ state, descriptors, navigation }: BottomTabBarProps) => {
   return (
@@ -10,13 +10,6 @@ const TabBar = ({ state, descriptors, navigation }: BottomTabBarProps) => {
       <View style={styles.tabBar}>
         {state.routes.map((route, index) => {
           const { options } = descriptors[route.key];
-          const label =
-            options.tabBarLabel !== undefined
-              ? options.tabBarLabel
-              : options.title !== undefined
-              ? options.title
-              : route.name;
-
           const isFocused = state.index === index;
 
           const onPress = () => {
@@ -38,21 +31,6 @@ const TabBar = ({ state, descriptors, navigation }: BottomTabBarProps) => {
             });
           };
 
-          // Map icons to route names
-          const getIcon = (name: string, isFocused: boolean) => {
-            switch (name) {
-              case "Home":
-                return "home";
-              case "Stitch":
-                return isFocused ? "cut-outline" : "cut";
-              case "Profile":
-                return "person";
-              default:
-                return "earth-outline";
-            }
-          };
-
-          // For stitch button we give custom styling with pressed effect
           const isStitch = route.name === "Stitch";
 
           return (
@@ -66,18 +44,37 @@ const TabBar = ({ state, descriptors, navigation }: BottomTabBarProps) => {
                   styles.stitchButton,
                   {
                     backgroundColor: pressed
-                      ? COLORS.lightViolet // Sweet pressed color
-                      : COLORS.lilac, // Default color
+                      ? COLORS.lightViolet
+                      : COLORS.lilac,
                   },
                 ],
               ]}
             >
-              <Ionicons
-                name={getIcon(route.name, isFocused) as any}
-                size={isStitch ? 36 : 30}
-                style={{ marginBottom: isStitch ? 0 : 4 }}
-                color={isFocused ? COLORS.black : COLORS.bgGry}
-              />
+              {route.name === "Explore" && (
+                <>
+                  <Ionicons
+                    name="home" // try "home" if still not working
+                    size={28}
+                    // color={isFocused ? COLORS.black : COLORS.bgGry}
+                  />
+                </>
+              )}
+
+              {route.name === "Stitch" && (
+                <View style={styles.stitchInner}>
+                  <Text style={styles.stitchLabel}>BOOK STITCH</Text>
+                </View>
+              )}
+
+              {route.name === "Profile" && (
+                <Image
+                  source={{ uri: "https://i.pravatar.cc/150?img=12" }}
+                  style={[
+                    styles.profileImage,
+                    { borderColor: isFocused ? COLORS.black : COLORS.bgGry },
+                  ]}
+                />
+              )}
             </Pressable>
           );
         })}
@@ -96,29 +93,13 @@ const styles = StyleSheet.create({
     right: 70,
     alignItems: "center",
   },
-
-  stitchButton: {
-    borderRadius: 65,
-    borderWidth: 5,
-    borderColor: COLORS.lightViolet,
-    position: "absolute",
-    width: 80,
-    height: 80,
-    bottom: -5,
-    alignItems: "center",
-    justifyContent: "center",
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.2,
-    shadowRadius: 6,
-    elevation: 8,
-  },
   tabBar: {
     flexDirection: "row",
     backgroundColor: COLORS.white,
     borderRadius: 40,
-    paddingVertical: 16,
-    paddingHorizontal: 15,
+    height: 70,
+    // paddingVertical: 16,
+    // paddingHorizontal: 15,
     justifyContent: "space-around",
     alignItems: "center",
     shadowColor: "#000",
@@ -126,7 +107,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 6,
     elevation: 6,
-    gap: 60,
   },
   tabItem: {
     flex: 1,
@@ -136,6 +116,37 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 12,
     fontFamily: FONTS.extraBold,
-    marginTop: 4,
+    marginTop: 2,
+  },
+  stitchButton: {
+    width: 90,
+    height: 90,
+    borderRadius: 45,
+    borderWidth: 8,
+    borderColor: COLORS.lightViolet,
+    alignItems: "center",
+    justifyContent: "center",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 6,
+    elevation: 8,
+  },
+  stitchInner: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  stitchLabel: {
+    fontSize: 16,
+    fontFamily: FONTS.latoB,
+    color: COLORS.black,
+    textAlign: "center",
+  },
+  profileImage: {
+    width: 44,
+    height: 44,
+    borderRadius: 21,
+    // borderWidth: 2,
   },
 });
