@@ -4,10 +4,12 @@ import EnterMobile from "../screens/initial/EnterMobile";
 import EnterOTP from "../screens/initial/EnterOTP";
 import Name from "../screens/initial/Name";
 import MainTabs from "./MainTabs";
+import AddAddress from "../screens/initial/AddAddress";
 export type AuthStackParamList = {
   EnterMobile: undefined;
   EnterOTP: undefined;
   Name: undefined;
+  AddAddress: undefined;
   MainTabs: undefined;
 };
 
@@ -19,6 +21,7 @@ export default function AuthStack() {
       <Stack.Screen name="EnterMobile" component={EnterMobile} />
       <Stack.Screen name="EnterOTP" component={EnterOTP} />
       <Stack.Screen name="Name" component={Name} />
+      <Stack.Screen name="AddAddress" component={AddAddress} />
       <Stack.Screen name="MainTabs" component={MainTabs} />
     </Stack.Navigator>
   );

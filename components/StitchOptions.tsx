@@ -7,7 +7,7 @@ import {
   ScrollView,
   Dimensions,
 } from "react-native";
-import { COLORS } from "../theme";
+import { COLORS, FONTS } from "../theme";
 
 const { width } = Dimensions.get("window");
 
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 14,
-    fontFamily: "latoB",
+    fontFamily: FONTS.latoB,
   },
   selectedText: {
     color: COLORS.black,

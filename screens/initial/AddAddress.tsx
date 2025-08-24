@@ -17,14 +17,18 @@ import { COLORS, FONTS } from "../../theme";
 import { useNavigation } from "@react-navigation/native";
 import StitchHeader from "../../components/StitchHeader";
 
-export default function Name() {
+export default function AddAddress() {
   const navigation = useNavigation();
-  const [fName, setFName] = useState("");
-  const [lName, setLName] = useState("");
+  const [Hno, setHno] = useState("");
+  const [streetNo, setStreetNo] = useState("");
+  const [locality, setLocality] = useState("");
+  const [city, setCity] = useState("Rupnagar");
+  const [pinCode, setPinCode] = useState("140001");
+  const [country, setCountry] = useState("India");
 
-  const handleLogin = () => {
-    if (fName && lName) {
-      navigation.navigate("AddAddress" as never);
+  const handleNext = () => {
+    if (Hno && streetNo && locality && city && pinCode && country) {
+      navigation.navigate("MainTabs" as never);
     } else {
       Alert.alert("Error", "Please fill all fields");
     }
@@ -42,7 +46,7 @@ export default function Name() {
           behavior={Platform.OS === "ios" ? "padding" : undefined}
         >
           <Animatable.View animation="fadeInDown" duration={1000}>
-            <Text style={styles.title}>What's your Name</Text>
+            <Text style={styles.title}>Add Address</Text>
           </Animatable.View>
 
           <Animatable.View
@@ -51,31 +55,75 @@ export default function Name() {
             delay={200}
             style={styles.card}
           >
+            {/* House No */}
             <View style={styles.inputRow}>
               <TextInput
                 style={styles.inputFlex}
-                placeholder="First Name"
+                placeholder="House No"
                 placeholderTextColor={COLORS.black}
-                value={fName}
-                onChangeText={setFName}
-                keyboardType="default"
-                autoCapitalize="none"
-              />
-            </View>
-            <View style={styles.inputRow}>
-              <TextInput
-                style={styles.inputFlex}
-                placeholder="Last Name"
-                placeholderTextColor={COLORS.black}
-                value={lName}
-                onChangeText={setLName}
-                keyboardType="default"
-                autoCapitalize="none"
+                value={Hno}
+                onChangeText={setHno}
               />
             </View>
 
-            {/* Login Button */}
-            <TouchableOpacity style={styles.button} onPress={handleLogin}>
+            {/* Street No */}
+            <View style={styles.inputRow}>
+              <TextInput
+                style={styles.inputFlex}
+                placeholder="Street No."
+                placeholderTextColor={COLORS.black}
+                value={streetNo}
+                onChangeText={setStreetNo}
+              />
+            </View>
+
+            {/* Locality */}
+            <View style={styles.inputRow}>
+              <TextInput
+                style={styles.inputFlex}
+                placeholder="Locality"
+                placeholderTextColor={COLORS.black}
+                value={locality}
+                onChangeText={setLocality}
+              />
+            </View>
+
+            {/* City */}
+            <View style={styles.inputRow}>
+              <TextInput
+                style={styles.inputFlex}
+                placeholder="City"
+                placeholderTextColor={COLORS.black}
+                value={city}
+                onChangeText={setCity}
+              />
+            </View>
+
+            {/* Pin Code */}
+            <View style={styles.inputRow}>
+              <TextInput
+                style={styles.inputFlex}
+                placeholder="Pin Code"
+                placeholderTextColor={COLORS.black}
+                value={pinCode}
+                onChangeText={setPinCode}
+                keyboardType="numeric"
+              />
+            </View>
+
+            {/* Country */}
+            <View style={styles.inputRow}>
+              <TextInput
+                style={styles.inputFlex}
+                placeholder="Country"
+                placeholderTextColor={COLORS.black}
+                value={country}
+                onChangeText={setCountry}
+              />
+            </View>
+
+            {/* Next Button */}
+            <TouchableOpacity style={styles.button} onPress={handleNext}>
               <Text style={styles.buttonText}>Next</Text>
             </TouchableOpacity>
           </Animatable.View>
@@ -100,7 +148,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginBottom: 12,
   },
-
   card: {
     backgroundColor: COLORS.black,
     padding: 24,
@@ -128,14 +175,6 @@ const styles = StyleSheet.create({
     fontFamily: FONTS.regular,
     color: COLORS.black,
   },
-  countryCode: {
-    fontSize: 16,
-    fontFamily: FONTS.medium,
-    color: COLORS.black,
-    marginLeft: 12,
-    marginRight: 6,
-  },
-  iconBtn: { padding: 6 },
   button: {
     backgroundColor: COLORS.white,
     paddingVertical: 14,

@@ -18,6 +18,7 @@ import OurNumbers from "../../components/stitchscreen/stitch/OurNumbers";
 import MadeWithLove from "../../components/MadeWithLove";
 import DiscountList from "../../components/stitchscreen/discounts/DiscountList";
 import PricingList from "../../components/stitchscreen/pricing/PricingList";
+import Shortcuts from "../../components/stitchscreen/shortcuts/Shortcuts";
 
 export default function StitchScreen() {
   const [optionSelected, setOptionSelected] = React.useState(0);
@@ -72,8 +73,8 @@ export default function StitchScreen() {
           )}
 
           {optionSelected === 1 && (
-            <View style={styles.centerContent}>
-              <Text style={styles.textWhite}>Shortcuts Content</Text>
+            <View style={styles.section}>
+              <Shortcuts />
             </View>
           )}
 
