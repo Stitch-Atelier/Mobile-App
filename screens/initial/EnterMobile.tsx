@@ -67,6 +67,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
+    marginBottom: 400,
   },
   enterNumber: {
     fontSize: 18,

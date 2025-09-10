@@ -55,7 +55,7 @@ const EnterOTP = () => {
           style={styles.card}
         >
           <Text style={styles.enterNumber}>
-            Please enter the OTP sent to your number
+            Please Enter the Confirmation Code
           </Text>
 
           {/* Mobile Number Display */}
@@ -101,6 +101,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
+    marginBottom: 400,
   },
   enterNumber: {
     fontSize: 18,

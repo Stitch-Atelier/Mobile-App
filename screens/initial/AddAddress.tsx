@@ -142,8 +142,8 @@ const styles = StyleSheet.create({
   gradient: { flex: 1 },
   container: { flex: 1, justifyContent: "center", paddingHorizontal: 20 },
   title: {
-    fontSize: 32,
-    fontFamily: FONTS.extraBold,
+    fontSize: 24,
+    fontFamily: FONTS.latoB,
     color: COLORS.white,
     textAlign: "center",
     marginBottom: 12,
@@ -157,6 +157,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 6 },
     shadowRadius: 10,
     elevation: 6,
+    marginBottom: 200,
   },
   inputRow: {
     flexDirection: "row",

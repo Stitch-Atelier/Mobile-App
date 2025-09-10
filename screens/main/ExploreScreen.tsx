@@ -1,21 +1,132 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
-import { COLORS, FONTS } from "../../theme";
+import {
+  View,
+  Text,
+  StyleSheet,
+  SafeAreaView,
+  ScrollView,
+  StatusBar,
+  Platform,
+} from "react-native";
+import { COLORS } from "../../theme";
+import StitchHeader from "../../components/StitchHeader";
+import CarouselBanner from "../../components/explorescreen/stitch/CarouselBanner";
+import StitchOptions from "../../components/StitchOptions";
+import AddressName from "../../components/AddressName";
+import StitchStory from "../../components/explorescreen/stitch/StitchStory";
+import OurNumbers from "../../components/explorescreen/stitch/OurNumbers";
+import MadeWithLove from "../../components/MadeWithLove";
+import DiscountList from "../../components/explorescreen/discounts/DiscountList";
+import PricingList from "../../components/explorescreen/pricing/PricingList";
+import Shortcuts from "../../components/explorescreen/shortcuts/Shortcuts";
 
 export default function ExploreScreen() {
+  const [optionSelected, setOptionSelected] = React.useState(0);
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Explore Screen</Text>
-    </View>
+    <SafeAreaView style={styles.safeArea}>
+      {/* StatusBar Config */}
+      <StatusBar
+        translucent
+        backgroundColor="transparent"
+        barStyle="light-content"
+      />
+
+      {/* Fixed Header */}
+      <StitchHeader />
+
+      {/* Address block just below header */}
+      <View style={styles.addressWrapper}>
+        <AddressName />
+      </View>
+
+      {/* Scrollable Content */}
+      <ScrollView
+        style={styles.scrollView}
+        contentContainerStyle={styles.scrollContent}
+        showsVerticalScrollIndicator={false}
+      >
+        {/* Carousel */}
+        <View style={styles.section}>
+          <CarouselBanner />
+        </View>
+
+        {/* Options */}
+        <View style={styles.section}>
+          <StitchOptions
+            selectedIndex={optionSelected}
+            onSelect={setOptionSelected}
+          />
+        </View>
+
+        {/* Content based on tab selection */}
+        <View style={styles.section}>
+          {optionSelected === 0 && (
+            <>
+              <View style={styles.section}>
+                <StitchStory />
+              </View>
+              <View style={styles.section}>
+                <OurNumbers />
+              </View>
+            </>
+          )}
+
+          {optionSelected === 1 && (
+            <View style={styles.section}>
+              <Shortcuts />
+            </View>
+          )}
+
+          {optionSelected === 2 && (
+            <View style={styles.section}>
+              <PricingList />
+            </View>
+          )}
+
+          {optionSelected === 3 && (
+            <View style={styles.section}>
+              <DiscountList />
+            </View>
+          )}
+        </View>
+
+        {/* Bottom Spacer */}
+        <View style={styles.section}>
+          <MadeWithLove />
+        </View>
+        <View style={{ height: 80 }} />
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  safeArea: {
     flex: 1,
     backgroundColor: COLORS.black,
-    justifyContent: "center",
-    alignItems: "center",
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
-  text: { fontFamily: FONTS.bold, fontSize: 20, color: COLORS.black },
+  addressWrapper: {
+    marginHorizontal: 12,
+    marginTop: 8,
+  },
+  scrollView: {
+    flex: 1,
+  },
+  scrollContent: {
+    paddingBottom: 40,
+  },
+  section: {
+    marginVertical: 10,
+  },
+  centerContent: {
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 20,
+  },
+  textWhite: {
+    color: COLORS.white,
+    fontSize: 16,
+  },
 });
