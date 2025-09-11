@@ -1,5 +1,6 @@
 import React from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import { COLORS, FONTS } from "../../../theme";
 
 const data = [
@@ -7,31 +8,38 @@ const data = [
     heading: "Order Status",
     description: "Fast fixes in minutes",
     icon: require("../../../assets/orderStatus.png"),
+    screen: "OrderStatus",
   },
   {
     heading: "My Measurements",
     description: "Gentle on all materials",
     icon: require("../../../assets/body.png"),
+    screen: "MyMeasurements", // add in stack
   },
   {
     heading: "Order History",
     description: "Tailored adjustments",
     icon: require("../../../assets/clock.png"),
+    screen: "OrderHistory", // add in stack
   },
   {
     heading: "Stitch Points",
     description: "Best price guaranteed",
     icon: require("../../../assets/token.png"),
+    screen: "StitchPoints", // add in stack
   },
 ];
 
 const Shortcuts = () => {
+  const navigation = useNavigation<any>();
+
   return (
     <View style={styles.container}>
       {data.map((item, index) => (
-        <View
+        <TouchableOpacity
           key={index}
           style={index === 1 || index === 2 ? styles.card1 : styles.card2}
+          onPress={() => navigation.navigate(item.screen)}
         >
           {/* Heading */}
           <Text style={styles.heading}>{item.heading}</Text>
@@ -47,14 +55,13 @@ const Shortcuts = () => {
               {item.description}
             </Text>
 
-            {/* Replace Ionicons with PNG */}
             <Image
               source={item.icon}
               style={[styles.icon]}
               resizeMode="contain"
             />
           </View>
-        </View>
+        </TouchableOpacity>
       ))}
     </View>
   );

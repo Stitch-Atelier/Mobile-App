@@ -9,6 +9,20 @@ const TabBar = ({ state, descriptors, navigation }: BottomTabBarProps) => {
     <View style={styles.wrapper}>
       <View style={styles.tabBar}>
         {state.routes.map((route, index) => {
+          // ⛔ Skip "OrderStatus" tab
+          if (route.name === "OrderStatus") {
+            return null;
+          }
+          if (route.name === "MyMeasurements") {
+            return null;
+          }
+          if (route.name === "OrderHistory") {
+            return null;
+          }
+          if (route.name === "StitchPoints") {
+            return null;
+          }
+
           const { options } = descriptors[route.key];
           const isFocused = state.index === index;
 
@@ -50,15 +64,7 @@ const TabBar = ({ state, descriptors, navigation }: BottomTabBarProps) => {
                 ],
               ]}
             >
-              {route.name === "Explore" && (
-                <>
-                  <Ionicons
-                    name="home" // try "home" if still not working
-                    size={28}
-                    // color={isFocused ? COLORS.black : COLORS.bgGry}
-                  />
-                </>
-              )}
+              {route.name === "Explore" && <Ionicons name="home" size={28} />}
 
               {route.name === "Stitch" && (
                 <View style={styles.stitchInner}>
@@ -98,8 +104,6 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.white,
     borderRadius: 40,
     height: 70,
-    // paddingVertical: 16,
-    // paddingHorizontal: 15,
     justifyContent: "space-around",
     alignItems: "center",
     shadowColor: "#000",
@@ -147,6 +151,5 @@ const styles = StyleSheet.create({
     width: 44,
     height: 44,
     borderRadius: 21,
-    // borderWidth: 2,
   },
 });
