@@ -12,8 +12,9 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
+  const [isUserLoggedIn, _] = useState(true);
 
-  const isUserLoggedIn = true; // Replace with your actual auth logic
+  // Replace with your actual auth logic
 
   const [fontsLoaded] = Font.useFonts({
     PlayBold: require("./assets/fonts/Playfair-Bold.ttf"),
