@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import { COLORS, FONTS } from "../../theme";
 
-const EmptyOrderStatus: React.FC = () => {
+const EmptyMyMeasurements: React.FC = () => {
   return (
     <SafeAreaView style={styles.safeArea}>
       <StatusBar
@@ -26,12 +26,14 @@ const EmptyOrderStatus: React.FC = () => {
       <View style={styles.container}>
         {/* Top Heading */}
         <View style={styles.header}>
-          <Text style={styles.heading}>Order Status</Text>
-          <Text style={styles.subHeading}>Track All your Active Orders</Text>
+          <Text style={styles.heading}>My Measurements</Text>
+          <Text style={styles.subHeading}>
+            View your latest Body Measurements
+          </Text>
         </View>
         <View>
           <Text style={[styles.subHeading, { marginTop: 10 }]}>
-            No Active Orders Yet
+            No Measurements found yet
           </Text>
         </View>
       </View>
@@ -46,22 +48,20 @@ const EmptyOrderStatus: React.FC = () => {
       >
         <Image
           style={{ height: 300, width: 300, borderRadius: 20 }}
-          source={require("../../assets/emptyOrderStatus.png")}
+          source={require("../../assets/EmptyMesurement.jpg")}
         />
       </View>
 
       <View style={styles.container}>
         <View>
-          <Text style={styles.subHeading}>
-            Book your stitching order and track every stage as it progresses
-          </Text>
+          <Text style={styles.subHeading}>Book Stitch to get Started</Text>
         </View>
       </View>
     </SafeAreaView>
   );
 };
 
-export default EmptyOrderStatus;
+export default EmptyMyMeasurements;
 
 const styles = StyleSheet.create({
   safeArea: {
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   heading: {
-    fontSize: 60,
+    fontSize: 40,
     color: COLORS.white,
     fontFamily: FONTS.semiBoldItalic,
     textAlign: "center",

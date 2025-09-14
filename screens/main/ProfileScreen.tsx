@@ -65,7 +65,7 @@ export default function ProfileScreen({ navigation }: any) {
 
           <TouchableOpacity
             style={styles.gridItem}
-            onPress={() => handleNavigate("Measurements")}
+            onPress={() => handleNavigate("MyMeasurements")}
           >
             <Ionicons name="body-outline" size={28} color={COLORS.white} />
             <Text style={styles.gridText}>My Measurements</Text>

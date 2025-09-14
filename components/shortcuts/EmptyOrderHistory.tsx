@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import { COLORS, FONTS } from "../../theme";
 
-const EmptyOrderStatus: React.FC = () => {
+const EmptyOrderHistory: React.FC = () => {
   return (
     <SafeAreaView style={styles.safeArea}>
       <StatusBar
@@ -26,12 +26,12 @@ const EmptyOrderStatus: React.FC = () => {
       <View style={styles.container}>
         {/* Top Heading */}
         <View style={styles.header}>
-          <Text style={styles.heading}>Order Status</Text>
-          <Text style={styles.subHeading}>Track All your Active Orders</Text>
+          <Text style={styles.heading}>Order History</Text>
+          <Text style={styles.subHeading}>All your Past Orders</Text>
         </View>
         <View>
           <Text style={[styles.subHeading, { marginTop: 10 }]}>
-            No Active Orders Yet
+            No Order Placed Yet
           </Text>
         </View>
       </View>
@@ -46,22 +46,20 @@ const EmptyOrderStatus: React.FC = () => {
       >
         <Image
           style={{ height: 300, width: 300, borderRadius: 20 }}
-          source={require("../../assets/emptyOrderStatus.png")}
+          source={require("../../assets/EmptyOrderHistory.png")}
         />
       </View>
 
       <View style={styles.container}>
         <View>
-          <Text style={styles.subHeading}>
-            Book your stitching order and track every stage as it progresses
-          </Text>
+          <Text style={styles.subHeading}>Book your first Stitch NOW!</Text>
         </View>
       </View>
     </SafeAreaView>
   );
 };
 
-export default EmptyOrderStatus;
+export default EmptyOrderHistory;
 
 const styles = StyleSheet.create({
   safeArea: {

@@ -25,8 +25,17 @@ const TabBar = ({ state, descriptors, navigation }: BottomTabBarProps) => {
           if (route.name === "EmptyOrderStatus") {
             return null;
           }
+          if (route.name === "EmptyOrderHistory") {
+            return null;
+          }
+          if (route.name === "EmptyMyMeasurements") {
+            return null;
+          }
+          if (route.name === "EmptyStitchPoints") {
+            return null;
+          }
 
-          const { options } = descriptors[route.key];
+          // const { options } = descriptors[route.key];
           const isFocused = state.index === index;
 
           const onPress = () => {

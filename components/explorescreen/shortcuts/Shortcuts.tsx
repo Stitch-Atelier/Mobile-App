@@ -4,6 +4,9 @@ import { useNavigation } from "@react-navigation/native";
 import { COLORS, FONTS } from "../../../theme";
 
 const isOrderStatus = false;
+const isOrderHistory = false;
+const isMesurementsAvl = false;
+const areStitchPts = false;
 
 const data = [
   {
@@ -16,19 +19,19 @@ const data = [
     heading: "My Measurements",
     description: "Gentle on all materials",
     icon: require("../../../assets/body.png"),
-    screen: "MyMeasurements", // add in stack
+    screen: isMesurementsAvl ? "MyMeasurements" : "EmptyMyMeasurements", // add in stack
   },
   {
     heading: "Order History",
     description: "Tailored adjustments",
     icon: require("../../../assets/clock.png"),
-    screen: "OrderHistory", // add in stack
+    screen: isOrderHistory ? "OrderHistory" : "EmptyOrderHistory", // add in stack
   },
   {
     heading: "Stitch Points",
     description: "Best price guaranteed",
     icon: require("../../../assets/token.png"),
-    screen: "StitchPoints", // add in stack
+    screen: areStitchPts ? "StitchPoints" : "EmptyStitchPoints", // add in stack
   },
 ];
 
