@@ -13,8 +13,11 @@ import { Ionicons } from "@expo/vector-icons";
 import { COLORS, FONTS } from "../../theme";
 import StitchHeader from "../../components/StitchHeader";
 import MadeWithLove from "../../components/MadeWithLove";
+import { useIsEmptyStore } from "../../store/isEmptyStore";
 
 export default function ProfileScreen({ navigation }: any) {
+  const { isEmpty } = useIsEmptyStore();
+
   const handleNavigate = (screen: string) => {
     navigation.navigate(screen);
   };
@@ -57,7 +60,9 @@ export default function ProfileScreen({ navigation }: any) {
         <View style={styles.gridContainer}>
           <TouchableOpacity
             style={styles.gridItem}
-            onPress={() => handleNavigate("OrderStatus")}
+            onPress={() =>
+              handleNavigate(!isEmpty ? "OrderStatus" : "EmptyOrderStatus")
+            }
           >
             <Ionicons name="receipt-outline" size={28} color={COLORS.white} />
             <Text style={styles.gridText}>Order Status</Text>
@@ -65,7 +70,11 @@ export default function ProfileScreen({ navigation }: any) {
 
           <TouchableOpacity
             style={styles.gridItem}
-            onPress={() => handleNavigate("MyMeasurements")}
+            onPress={() =>
+              handleNavigate(
+                !isEmpty ? "MyMeasurements" : "EmptyMyMeasurements"
+              )
+            }
           >
             <Ionicons name="body-outline" size={28} color={COLORS.white} />
             <Text style={styles.gridText}>My Measurements</Text>
@@ -73,7 +82,9 @@ export default function ProfileScreen({ navigation }: any) {
 
           <TouchableOpacity
             style={styles.gridItem}
-            onPress={() => handleNavigate("OrderHistory")}
+            onPress={() =>
+              handleNavigate(!isEmpty ? "OrderHistory" : "EmptyOrderHistory")
+            }
           >
             <Ionicons name="time-outline" size={28} color={COLORS.white} />
             <Text style={styles.gridText}>Order History</Text>
@@ -81,7 +92,9 @@ export default function ProfileScreen({ navigation }: any) {
 
           <TouchableOpacity
             style={styles.gridItem}
-            onPress={() => handleNavigate("StitchPoints")}
+            onPress={() =>
+              handleNavigate(!isEmpty ? "StitchPoints" : "EmptyStitchPoints")
+            }
           >
             <Ionicons name="ribbon-outline" size={28} color={COLORS.white} />
             <Text style={styles.gridText}>Stitch Points</Text>
@@ -93,7 +106,7 @@ export default function ProfileScreen({ navigation }: any) {
           <Text style={styles.sectionTitle}>Account Settings</Text>
           <TouchableOpacity
             style={styles.settingsItem}
-            onPress={() => handleNavigate("EditProfile")}
+            // onPress={() => handleNavigate("EditProfile")}
           >
             <Ionicons name="create-outline" size={22} color={COLORS.white} />
             <Text style={styles.settingsText}>Edit Profile</Text>
@@ -101,7 +114,7 @@ export default function ProfileScreen({ navigation }: any) {
 
           <TouchableOpacity
             style={styles.settingsItem}
-            onPress={() => handleNavigate("SavedAddresses")}
+            // onPress={() => handleNavigate("SavedAddresses")}
           >
             <Ionicons name="location-outline" size={22} color={COLORS.white} />
             <Text style={styles.settingsText}>Saved Addresses</Text>
@@ -113,7 +126,7 @@ export default function ProfileScreen({ navigation }: any) {
           <Text style={styles.sectionTitle}>Information</Text>
           <TouchableOpacity
             style={styles.settingsItem}
-            onPress={() => handleNavigate("PrivacyPolicy")}
+            // onPress={() => handleNavigate("PrivacyPolicy")}
           >
             <Ionicons
               name="shield-checkmark-outline"
@@ -125,7 +138,7 @@ export default function ProfileScreen({ navigation }: any) {
 
           <TouchableOpacity
             style={styles.settingsItem}
-            onPress={() => handleNavigate("TermsConditions")}
+            // onPress={() => handleNavigate("TermsConditions")}
           >
             <Ionicons
               name="document-text-outline"
@@ -136,7 +149,9 @@ export default function ProfileScreen({ navigation }: any) {
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.settingsItem}
-            onPress={() => handleNavigate("TermsConditions")}
+            onPress={() =>
+              handleNavigate(!isEmpty ? "StitchPoints" : "EmptyStitchPoints")
+            }
           >
             <Ionicons name="star" size={22} color={COLORS.white} />
             <Text style={styles.settingsText}>Stitch Points</Text>

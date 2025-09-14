@@ -1,80 +1,129 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { COLORS, FONTS } from "../../../theme";
+import { useIsEmptyStore } from "../../../store/isEmptyStore";
 
-const isOrderStatus = false;
-const isOrderHistory = false;
-const isMesurementsAvl = false;
-const areStitchPts = false;
-
-const data = [
-  {
-    heading: "Order Status",
-    description: "View Your Current Orders",
-    icon: require("../../../assets/orderStatus.png"),
-    screen: isOrderStatus ? "OrderStatus" : "EmptyOrderStatus",
-  },
-  {
-    heading: "My Measurements",
-    description: "Gentle on all materials",
-    icon: require("../../../assets/body.png"),
-    screen: isMesurementsAvl ? "MyMeasurements" : "EmptyMyMeasurements", // add in stack
-  },
-  {
-    heading: "Order History",
-    description: "Tailored adjustments",
-    icon: require("../../../assets/clock.png"),
-    screen: isOrderHistory ? "OrderHistory" : "EmptyOrderHistory", // add in stack
-  },
-  {
-    heading: "Stitch Points",
-    description: "Best price guaranteed",
-    icon: require("../../../assets/token.png"),
-    screen: areStitchPts ? "StitchPoints" : "EmptyStitchPoints", // add in stack
-  },
-];
+// const isOrderStatus = false;
+// const isOrderHistory = false;
+// const isMesurementsAvl = false;
+// const areStitchPts = false;
 
 const Shortcuts = () => {
   const navigation = useNavigation<any>();
+  const { isEmpty, setIsEmpty } = useIsEmptyStore();
+  const [isOn, setIsOn] = useState(false);
+
+  const data = [
+    {
+      heading: "Order Status",
+      description: "View Your Current Orders",
+      icon: require("../../../assets/orderStatus.png"),
+      screen: !isEmpty ? "OrderStatus" : "EmptyOrderStatus",
+    },
+    {
+      heading: "My Measurements",
+      description: "Gentle on all materials",
+      icon: require("../../../assets/body.png"),
+      screen: !isEmpty ? "MyMeasurements" : "EmptyMyMeasurements", // add in stack
+    },
+    {
+      heading: "Order History",
+      description: "Tailored adjustments",
+      icon: require("../../../assets/clock.png"),
+      screen: !isEmpty ? "OrderHistory" : "EmptyOrderHistory", // add in stack
+    },
+    {
+      heading: "Stitch Points",
+      description: "Best price guaranteed",
+      icon: require("../../../assets/token.png"),
+      screen: !isEmpty ? "StitchPoints" : "EmptyStitchPoints", // add in stack
+    },
+  ];
+
+  useEffect(() => {
+    setIsEmpty(isOn);
+  }, [isOn]);
 
   return (
-    <View style={styles.container}>
-      {data.map((item, index) => (
+    <>
+      {/* Toggle button */}
+      <View style={styles.container}>
+        <Text style={styles.label}>Guest Mode</Text>
         <TouchableOpacity
-          key={index}
-          style={index === 1 || index === 2 ? styles.card1 : styles.card2}
-          onPress={() => navigation.navigate(item.screen)}
+          style={[styles.toggle, isOn ? styles.toggleOn : styles.toggleOff]}
+          onPress={() => setIsOn(!isOn)}
         >
-          {/* Heading */}
-          <Text style={styles.heading}>{item.heading}</Text>
-
-          <View style={styles.content}>
-            <Text
-              style={
-                index === 1 || index === 2
-                  ? styles.description2
-                  : styles.description1
-              }
-            >
-              {item.description}
-            </Text>
-
-            <Image
-              source={item.icon}
-              style={[styles.icon]}
-              resizeMode="contain"
-            />
-          </View>
+          <View
+            style={[
+              styles.circle,
+              { alignSelf: isOn ? "flex-end" : "flex-start" },
+            ]}
+          />
         </TouchableOpacity>
-      ))}
-    </View>
+      </View>
+
+      <View style={styles.container}>
+        {data.map((item, index) => (
+          <TouchableOpacity
+            key={index}
+            style={index === 1 || index === 2 ? styles.card1 : styles.card2}
+            onPress={() => navigation.navigate(item.screen)}
+          >
+            {/* Heading */}
+            <Text style={styles.heading}>{item.heading}</Text>
+
+            <View style={styles.content}>
+              <Text
+                style={
+                  index === 1 || index === 2
+                    ? styles.description2
+                    : styles.description1
+                }
+              >
+                {item.description}
+              </Text>
+
+              <Image
+                source={item.icon}
+                style={[styles.icon]}
+                resizeMode="contain"
+              />
+            </View>
+          </TouchableOpacity>
+        ))}
+      </View>
+    </>
   );
 };
 
 export default Shortcuts;
 
 const styles = StyleSheet.create({
+  toggle: {
+    width: 50,
+    height: 28,
+    borderRadius: 28,
+    padding: 3,
+    justifyContent: "center",
+  },
+  label: {
+    fontSize: 16,
+    fontWeight: "600",
+    color: COLORS.white,
+  },
+  toggleOn: {
+    backgroundColor: "#4CAF50", // green
+  },
+  toggleOff: {
+    backgroundColor: "#ccc", // grey
+  },
+  circle: {
+    width: 22,
+    height: 22,
+    borderRadius: 11,
+    backgroundColor: "#fff",
+  },
   container: {
     flexDirection: "row",
     flexWrap: "wrap",
