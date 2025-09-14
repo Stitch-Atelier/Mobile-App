@@ -22,6 +22,9 @@ const TabBar = ({ state, descriptors, navigation }: BottomTabBarProps) => {
           if (route.name === "StitchPoints") {
             return null;
           }
+          if (route.name === "EmptyOrderStatus") {
+            return null;
+          }
 
           const { options } = descriptors[route.key];
           const isFocused = state.index === index;

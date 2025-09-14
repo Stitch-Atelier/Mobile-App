@@ -9,6 +9,7 @@ import {
   Platform,
   ScrollView,
   FlatList,
+  Image,
 } from "react-native";
 import { COLORS, FONTS } from "../../theme";
 import PerOrder from "./PerOrder";
@@ -61,7 +62,7 @@ const orders: OrderI[] = [
   },
 ];
 
-const OrderStatus: React.FC = () => {
+const EmptyOrderStatus: React.FC = () => {
   return (
     <SafeAreaView style={styles.safeArea}>
       <StatusBar
@@ -80,21 +81,38 @@ const OrderStatus: React.FC = () => {
           <Text style={styles.subHeading}>Track All your Active Orders</Text>
         </View>
         <View>
-          <Text style={styles.orderCount}>Active Orders {orders.length}</Text>
+          <Text style={[styles.subHeading, { marginTop: 10 }]}>
+            No Active Orders Yet
+          </Text>
         </View>
       </View>
 
-      <FlatList
-        data={orders}
-        keyExtractor={(item) => item.orderId}
-        renderItem={({ item }) => <PerOrder {...item} />}
-        contentContainerStyle={{ paddingBottom: 140 }}
-      />
+      <View
+        style={{
+          flexDirection: "row",
+          justifyContent: "center",
+          alignContent: "center",
+          marginVertical: 20,
+        }}
+      >
+        <Image
+          style={{ height: 300, width: 300, borderRadius: 20 }}
+          source={require("../../assets/emptyOrderStatus.png")}
+        />
+      </View>
+
+      <View style={styles.container}>
+        <View>
+          <Text style={styles.subHeading}>
+            Book your stitching order and track every stage as it progresses
+          </Text>
+        </View>
+      </View>
     </SafeAreaView>
   );
 };
 
-export default OrderStatus;
+export default EmptyOrderStatus;
 
 const styles = StyleSheet.create({
   safeArea: {
@@ -120,7 +138,7 @@ const styles = StyleSheet.create({
   subHeading: {
     fontSize: 20,
     color: COLORS.white,
-    fontFamily: FONTS.boldItalic,
+    fontFamily: FONTS.bold,
     textAlign: "center",
   },
   orderCount: {

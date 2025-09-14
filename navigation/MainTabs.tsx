@@ -8,6 +8,7 @@ import OrderStatus from "../components/shortcuts/OrderStatus";
 import MyMeasurements from "../components/shortcuts/MyMeasurements";
 import OrderHistory from "../components/shortcuts/OrderHistory";
 import StitchPoints from "../components/shortcuts/StitchPoints";
+import EmptyOrderStatus from "../components/shortcuts/EmptyOrderStatus";
 
 const Tab = createBottomTabNavigator();
 
@@ -23,6 +24,7 @@ export default function MainTabs() {
       <Tab.Screen name="Stitch" component={StitchScreen} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
       <Tab.Screen name="OrderStatus" component={OrderStatus} />
+      <Tab.Screen name="EmptyOrderStatus" component={EmptyOrderStatus} />
       <Tab.Screen name="MyMeasurements" component={MyMeasurements} />
       <Tab.Screen name="OrderHistory" component={OrderHistory} />
       <Tab.Screen name="StitchPoints" component={StitchPoints} />

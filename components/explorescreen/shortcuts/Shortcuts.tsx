@@ -3,12 +3,14 @@ import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { COLORS, FONTS } from "../../../theme";
 
+const isOrderStatus = false;
+
 const data = [
   {
     heading: "Order Status",
-    description: "Fast fixes in minutes",
+    description: "View Your Current Orders",
     icon: require("../../../assets/orderStatus.png"),
-    screen: "OrderStatus",
+    screen: isOrderStatus ? "OrderStatus" : "EmptyOrderStatus",
   },
   {
     heading: "My Measurements",
